@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOLD Token | The Future of Digital Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-gold: #D4AF37;
+      --secondary-gold: #F4E4BA;
+      --accent-gold: #FFD700;
+      --dark-bg: #0A0A0A;
+      --card-bg: #141414;
+      --text-primary: #FFFFFF;
+      --text-secondary: #A0A0A0;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wallet-btn {
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      border: 1.5px solid var(--primary-gold);
+      border-radius: 50px;
+      color: var(--primary-gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wallet-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+      transition: left 0.5s;
+    }
+
+    .wallet-btn:hover::before {
+      left: 100%;
+    }
+
+    .wallet-btn:hover {
+      background: var(--primary-gold);
+      color: var(--dark-bg);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.35), 0 0 60px rgba(212, 175, 55, 0.15);
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 600px 600px at 30% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at 70% 80%, rgba(255, 215, 0, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 800px 400px at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: orbFloat 12s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(212, 175, 55, 0.08);
+      top: -100px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 215, 0, 0.06);
+      bottom: -50px;
+      left: -50px;
+      animation-delay: -4s;
+    }
+
+    .orb-3 {
+      width: 200px;
+      height: 200px;
+      background: rgba(244, 228, 186, 0.05);
+      top: 40%;
+      left: 60%;
+      animation-delay: -8s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+    }
+
+    /* Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleRise linear infinite;
+    }
+
+    .particle:nth-child(1) { left: 8%; width: 3px; height: 3px; background: var(--accent-gold); animation-duration: 9s; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 18%; width: 2px; height: 2px; background: var(--primary-gold); animation-duration: 7s; animation-delay: 1s; }
+    .particle:nth-child(3) { left: 30%; width: 4px; height: 4px; background: var(--secondary-gold); animation-duration: 11s; animation-delay: 2s; }
+    .particle:nth-child(4) { left: 42%; width: 2px; height: 2px; background: var(--accent-gold); animation-duration: 8s; animation-delay: 0.5s; }
+    .particle:nth-child(5) { left: 55%; width: 3px; height: 3px; background: var(--primary-gold); animation-duration: 10s; animation-delay: 1.5s; }
+    .particle:nth-child(6) { left: 68%; width: 2px; height: 2px; background: var(--accent-gold); animation-duration: 7s; animation-delay: 3s; }
+    .particle:nth-child(7) { left: 78%; width: 4px; height: 4px; background: var(--secondary-gold); animation-duration: 9s; animation-delay: 0.8s; }
+    .particle:nth-child(8) { left: 88%; width: 2px; height: 2px; background: var(--primary-gold); animation-duration: 8s; animation-delay: 2.5s; }
+    .particle:nth-child(9) { left: 15%; width: 3px; height: 3px; background: var(--accent-gold); animation-duration: 12s; animation-delay: 4s; }
+    .particle:nth-child(10) { left: 92%; width: 2px; height: 2px; background: var(--primary-gold); animation-duration: 6s; animation-delay: 1.2s; }
+    .particle:nth-child(11) { left: 50%; width: 3px; height: 3px; background: var(--secondary-gold); animation-duration: 10s; animation-delay: 3.5s; }
+    .particle:nth-child(12) { left: 38%; width: 2px; height: 2px; background: var(--accent-gold); animation-duration: 8s; animation-delay: 0.3s; }
+
+    @keyframes particleRise {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      50% { opacity: 0.3; }
+      90% { opacity: 0.1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--secondary-gold);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+      background: rgba(212, 175, 55, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-badge .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      position: relative;
+    }
+
+    .hero-badge .pulse::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.8); }
+    }
+
+    /* Hero logo with animated ring */
+    .hero-logo-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-logo-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--primary-gold), var(--accent-gold), var(--secondary-gold), var(--primary-gold));
+      animation: ringRotate 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    .hero-logo-ring::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--dark-bg);
+    }
+
+    @keyframes ringRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero-logo {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow:
+        0 0 40px rgba(212, 175, 55, 0.3),
+        0 0 80px rgba(212, 175, 55, 0.15),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 80px rgba(212, 175, 55, 0.15); }
+      100% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.45), 0 0 120px rgba(212, 175, 55, 0.2); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-gold) 40%, var(--secondary-gold) 70%, var(--accent-gold) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShimmer 4s ease-in-out infinite;
+      text-shadow: none;
+    }
+
+    @keyframes textShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+      border: none;
+      border-radius: 50px;
+      color: var(--dark-bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 40px rgba(212, 175, 55, 0.45), 0 0 80px rgba(212, 175, 55, 0.15);
+    }
+
+    .btn-secondary {
+      padding: 1rem 2.5rem;
+      background: transparent;
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      border-radius: 50px;
+      color: var(--primary-gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary-gold);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Section divider */
+    .section-divider {
+      width: 100%;
+      max-width: 200px;
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+      opacity: 0.4;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 7rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      max-width: 550px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 175, 55, 0.2);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(212, 175, 55, 0.08);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.04));
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.3rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover .feature-icon {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08));
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Tokenomics Section */
+    .tokenomics {
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .tokenomics::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 800px 400px at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 60%),
+        radial-gradient(ellipse 600px 600px at 80% 70%, rgba(255, 215, 0, 0.02) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .tokenomics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      border-radius: 20px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .stat-card:hover::after {
+      opacity: 0.5;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 175, 55, 0.15);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tokenomics-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .tokenomics-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Pie Chart */
+    .chart-card {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .chart-card:hover {
+      border-color: rgba(212, 175, 55, 0.15);
+    }
+
+    .chart-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+
+    .pie-chart {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: conic-gradient(
+        var(--primary-gold) 0deg 144deg,
+        var(--accent-gold) 144deg 234deg,
+        #8B6914 234deg 288deg,
+        var(--secondary-gold) 288deg 324deg,
+        #4A3F1A 324deg 360deg
+      );
+      position: relative;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .chart-card:hover .pie-chart {
+      transform: scale(1.03);
+    }
+
+    .pie-chart::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: #141414;
+      border-radius: 50%;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      transition: color 0.2s;
+    }
+
+    .legend-item:hover {
+      color: var(--text-primary);
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+    }
+
+    .legend-label {
+      color: var(--text-secondary);
+    }
+
+    .legend-value {
+      margin-left: auto;
+      font-weight: 600;
+    }
+
+    /* Sale Progress */
+    .sale-card {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .sale-card:hover {
+      border-color: rgba(212, 175, 55, 0.15);
+    }
+
+    .sale-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+
+    .sale-card .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-bar {
+      background: rgba(212, 175, 55, 0.08);
+      border-radius: 12px;
+      height: 22px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-gold), var(--accent-gold));
+      border-radius: 12px;
+      width: 0%;
+      transition: width 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+      animation: shimmer 2s ease-in-out infinite;
+      transform: translateX(-100%);
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-percent {
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .progress-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+    }
+
+    .progress-detail {
+      text-align: center;
+    }
+
+    .progress-detail-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+
+    .progress-detail-value {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.06);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+      opacity: 0.3;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.8rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      max-width: 280px;
+      line-height: 1.7;
+    }
+
+    .footer-links h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      position: relative;
+      padding-left: 0;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-gold);
+      padding-left: 6px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 1.1rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .social-link:hover {
+      border-color: var(--primary-gold);
+      background: rgba(212, 175, 55, 0.1);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.06);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      nav {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 1rem;
+      }
+
+      .features,
+      .tokenomics {
+        padding: 4rem 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .pie-chart {
+        width: 160px;
+        height: 160px;
+      }
+
+      .pie-chart::after {
+        width: 80px;
+        height: 80px;
+      }
+
+      .hero-logo-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+
+      .hero-logo {
+        width: 100px;
+        height: 100px;
+        font-size: 2.2rem;
+      }
+
+      .hero-logo-ring {
+        inset: -3px;
+      }
+
+      .orb-1 { width: 250px; height: 250px; }
+      .orb-2 { width: 200px; height: 200px; }
+      .orb-3 { width: 150px; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">GOLD</div>
+    <button class="wallet-btn">Connect Wallet</button>
+  </nav>
+
+  <section class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <span class="hero-badge"><span class="pulse"></span> Live Token Sale</span>
+
+    <div class="hero-logo-wrapper">
+      <div class="hero-logo-ring"></div>
+      <div class="hero-logo">&#9733;</div>
+    </div>
+
+    <h1>GOLD Token</h1>
+    <p class="hero-subtitle">The Future of Digital Finance</p>
+    <div class="hero-buttons">
+      <button class="btn-primary">Buy Now</button>
+      <button class="btn-secondary">Learn More</button>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="features" id="features">
+    <div class="section-header reveal">
+      <h2>Why Choose GOLD</h2>
+      <p>Built for the future of decentralized finance with security, speed, and community at its core.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">&#128274;</div>
+        <h3>Secure</h3>
+        <p>Audited smart contracts with military-grade encryption protecting your assets around the clock.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">&#9889;</div>
+        <h3>Fast</h3>
+        <p>Lightning-fast transactions with near-instant finality on leading blockchain networks.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">&#128176;</div>
+        <h3>Low Fees</h3>
+        <p>Minimal transaction costs designed to maximize your returns and minimize overhead.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-4">
+        <div class="feature-icon">&#129309;</div>
+        <h3>Community Governed</h3>
+        <p>Fully decentralized governance where every token holder has a voice in the future.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="tokenomics" id="tokenomics">
+    <div class="tokenomics-inner">
+      <div class="section-header reveal">
+        <h2>Tokenomics</h2>
+        <p>Transparent token distribution designed for long-term sustainability and growth.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-label">Total Supply</div>
+          <div class="stat-value">100M</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-label">Circulating</div>
+          <div class="stat-value">42.5M</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-label">Current Price</div>
+          <div class="stat-value">$0.85</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <div class="stat-label">Market Cap</div>
+          <div class="stat-value">$36.1M</div>
+        </div>
+      </div>
+
+      <div class="tokenomics-content">
+        <div class="chart-card reveal">
+          <h3>Token Distribution</h3>
+          <div class="pie-chart"></div>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <span class="legend-color" style="background: var(--primary-gold);"></span>
+              <span class="legend-label">Public Sale</span>
+              <span class="legend-value">40%</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background: var(--accent-gold);"></span>
+              <span class="legend-label">Team & Advisors</span>
+              <span class="legend-value">25%</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background: #8B6914;"></span>
+              <span class="legend-label">Ecosystem Fund</span>
+              <span class="legend-value">15%</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background: var(--secondary-gold);"></span>
+              <span class="legend-label">Staking Rewards</span>
+              <span class="legend-value">10%</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background: #4A3F1A;"></span>
+              <span class="legend-label">Reserve</span>
+              <span class="legend-value">10%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sale-card reveal reveal-delay-2">
+          <h3>Token Sale Progress</h3>
+          <p class="subtitle">Current round ends in 14 days</p>
+          <div class="progress-label">
+            <span style="color: var(--text-secondary);">Tokens Sold</span>
+            <span class="progress-percent">75%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" data-progress="75"></div>
+          </div>
+          <div class="progress-details">
+            <div class="progress-detail">
+              <div class="progress-detail-label">Sold</div>
+              <div class="progress-detail-value">30M GOLD</div>
+            </div>
+            <div class="progress-detail">
+              <div class="progress-detail-label">Remaining</div>
+              <div class="progress-detail-value">10M GOLD</div>
+            </div>
+            <div class="progress-detail">
+              <div class="progress-detail-label">Raised</div>
+              <div class="progress-detail-value">$25.5M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">GOLD</div>
+          <p>The next generation of digital finance. Secure, fast, and community-driven.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">&#120143;</a>
+            <a href="#" class="social-link" aria-label="Discord">&#128172;</a>
+            <a href="#" class="social-link" aria-label="Telegram">&#9993;</a>
+            <a href="#" class="social-link" aria-label="GitHub">&#9733;</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Whitepaper</a></li>
+            <li><a href="#">Audit Report</a></li>
+            <li><a href="#">Smart Contract</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 GOLD Token. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Progress bar animation
+    const progressFill = document.querySelector('.progress-fill');
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target.getAttribute('data-progress');
+          entry.target.style.width = target + '%';
+          progressObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    progressObserver.observe(progressFill);
+  </script>
+</body>
+</html>
