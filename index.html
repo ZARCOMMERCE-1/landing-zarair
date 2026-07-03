@@ -139,6 +139,20 @@
       overflow: hidden;
     }
 
+    /* Grid mesh background */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Radial glow behind center content */
     .hero::before {
       content: '';
       position: absolute;
@@ -147,11 +161,114 @@
       right: 0;
       bottom: 0;
       background:
-        radial-gradient(ellipse 600px 600px at 30% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 500px 500px at 70% 80%, rgba(255, 215, 0, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 800px 400px at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+        radial-gradient(ellipse 900px 500px at 50% 45%, rgba(212, 175, 55, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 600px 600px at 20% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 55%),
+        radial-gradient(ellipse 500px 500px at 80% 85%, rgba(255, 215, 0, 0.04) 0%, transparent 55%),
+        radial-gradient(ellipse 300px 300px at 70% 20%, rgba(244, 228, 186, 0.03) 0%, transparent 50%);
       pointer-events: none;
     }
+
+    /* Decorative rings */
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.06);
+      pointer-events: none;
+    }
+
+    .hero-ring-1 {
+      width: 600px;
+      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: ringPulse 6s ease-in-out infinite;
+    }
+
+    .hero-ring-2 {
+      width: 800px;
+      height: 800px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: ringPulse 6s ease-in-out infinite;
+      animation-delay: -2s;
+      border-style: dashed;
+      border-color: rgba(212, 175, 55, 0.04);
+    }
+
+    .hero-ring-3 {
+      width: 1000px;
+      height: 1000px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: ringPulse 6s ease-in-out infinite;
+      animation-delay: -4s;
+      border-color: rgba(212, 175, 55, 0.025);
+    }
+
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.03); }
+    }
+
+    /* Corner accent lines */
+    .hero-corner {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      pointer-events: none;
+    }
+
+    .hero-corner::before,
+    .hero-corner::after {
+      content: '';
+      position: absolute;
+      background: rgba(212, 175, 55, 0.12);
+    }
+
+    .hero-corner::before {
+      width: 1px;
+      height: 100%;
+    }
+
+    .hero-corner::after {
+      width: 100%;
+      height: 1px;
+    }
+
+    .hero-corner-tl {
+      top: 8%;
+      left: 6%;
+    }
+
+    .hero-corner-tl::before { top: 0; left: 0; }
+    .hero-corner-tl::after { top: 0; left: 0; }
+
+    .hero-corner-tr {
+      top: 8%;
+      right: 6%;
+    }
+
+    .hero-corner-tr::before { top: 0; right: 0; }
+    .hero-corner-tr::after { top: 0; right: 0; }
+
+    .hero-corner-bl {
+      bottom: 8%;
+      left: 6%;
+    }
+
+    .hero-corner-bl::before { bottom: 0; left: 0; }
+    .hero-corner-bl::after { bottom: 0; left: 0; }
+
+    .hero-corner-br {
+      bottom: 8%;
+      right: 6%;
+    }
+
+    .hero-corner-br::before { bottom: 0; right: 0; }
+    .hero-corner-br::after { bottom: 0; right: 0; }
 
     /* Floating orbs */
     .orb {
@@ -980,6 +1097,16 @@
       .orb-1 { width: 250px; height: 250px; }
       .orb-2 { width: 200px; height: 200px; }
       .orb-3 { width: 150px; height: 150px; }
+
+      .hero-ring-1 { width: 350px; height: 350px; }
+      .hero-ring-2 { width: 500px; height: 500px; }
+      .hero-ring-3 { width: 650px; height: 650px; }
+
+      .hero-corner { width: 50px; height: 50px; }
+      .hero-corner-tl { left: 3%; }
+      .hero-corner-tr { right: 3%; }
+      .hero-corner-bl { left: 3%; }
+      .hero-corner-br { right: 3%; }
     }
   </style>
 </head>
@@ -990,6 +1117,14 @@
   </nav>
 
   <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
+    <div class="hero-corner hero-corner-tl"></div>
+    <div class="hero-corner hero-corner-tr"></div>
+    <div class="hero-corner hero-corner-bl"></div>
+    <div class="hero-corner hero-corner-br"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
