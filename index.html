@@ -22,6 +22,7 @@
     }
 
     *, *::before, *::after {
+      -webkit-tap-highlight-color: transparent;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -897,11 +898,8 @@
       border-radius: 50%;
       margin: 0 auto 1.5rem;
       background: conic-gradient(
-        var(--primary-gold) 0deg 144deg,
-        var(--accent-gold) 144deg 234deg,
-        #8B6914 234deg 288deg,
-        var(--secondary-gold) 288deg 324deg,
-        #4A3F1A 324deg 360deg
+        #b78a18 0deg 120deg,
+        #55481c 120deg 360deg
       );
       position: relative;
       box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
@@ -1333,19 +1331,19 @@
       <div class="stats-grid">
         <div class="stat-card reveal reveal-delay-1">
           <div class="stat-label">Total Supply</div>
-          <div class="stat-value" data-target="100" data-suffix="M">0M</div>
+          <div class="stat-value" data-target="1.4" data-suffix="M" data-decimal="1">0M</div>
         </div>
         <div class="stat-card reveal reveal-delay-2">
           <div class="stat-label">Circulating</div>
-          <div class="stat-value" data-target="42.5" data-suffix="M" data-decimal="1">0M</div>
+          <div class="stat-value" data-target="0.56" data-decimal="2" data-suffix="M">0M</div>
         </div>
         <div class="stat-card reveal reveal-delay-3">
           <div class="stat-label">Current Price</div>
-          <div class="stat-value" data-target="0.85" data-prefix="$" data-suffix="" data-decimal="2">$0</div>
+          <div class="stat-value" data-target="140" data-prefix="$" data-suffix="">$0</div>
         </div>
         <div class="stat-card reveal reveal-delay-4">
           <div class="stat-label">Market Cap</div>
-          <div class="stat-value" data-target="36.1" data-prefix="$" data-suffix="M" data-decimal="1">$0M</div>
+          <div class="stat-value" data-target="196" data-prefix="$" data-suffix="M">$0M</div>
         </div>
       </div>
 
@@ -1360,24 +1358,9 @@
               <span class="legend-value">40%</span>
             </div>
             <div class="legend-item">
-              <span class="legend-color" style="background: var(--accent-gold);"></span>
-              <span class="legend-label">Team & Advisors</span>
-              <span class="legend-value">25%</span>
-            </div>
-            <div class="legend-item">
               <span class="legend-color" style="background: #8B6914;"></span>
               <span class="legend-label">Ecosystem Fund</span>
-              <span class="legend-value">15%</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-color" style="background: var(--secondary-gold);"></span>
-              <span class="legend-label">Staking Rewards</span>
-              <span class="legend-value">10%</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-color" style="background: #4A3F1A;"></span>
-              <span class="legend-label">Reserve</span>
-              <span class="legend-value">10%</span>
+              <span class="legend-value">60%</span>
             </div>
           </div>
         </div>
@@ -1387,24 +1370,24 @@
           <p class="subtitle">Current round ends in 14 days</p>
           <div class="progress-label">
             <span style="color: var(--text-secondary);">Tokens Sold</span>
-            <span class="progress-percent">75%</span>
+            <span class="progress-percent">10%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill" data-progress="75"></div>
+            <div class="progress-fill" data-progress="10"></div>
           </div>
           <div class="progress-details">
             <div class="progress-detail">
               <div class="progress-detail-label">Sold</div>
-              <div class="progress-detail-value">30M ZARAIR</div>
-
+              <div class="progress-detail-value">0.14M</div>
+            </div>
             <div class="progress-detail">
               <div class="progress-detail-label">Remaining</div>
-              <div class="progress-detail-value">10M ZARAIR</div>
+              <div class="progress-detail-value">1.26M</div>
             </div>
-            <div class="progress-detail">
+            <!-- <div class="progress-detail">
               <div class="progress-detail-label">Raised</div>
-              <div class="progress-detail-value">$25.5M</div>
-            </div>
+              <div class="progress-detail-value">$1M</div>
+            </div> -->
           </div>
         </div>
       </div>
