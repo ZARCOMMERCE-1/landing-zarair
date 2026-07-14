@@ -11,20 +11,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => revealObserver.observe(el));
 
-// Progress bar animation
-const progressFill = document.querySelector('.progress-fill');
-const progressObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const target = entry.target.getAttribute('data-progress');
-      entry.target.style.width = target + '%';
-      progressObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-progressObserver.observe(progressFill);
-
 // Nav scroll shadow
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
