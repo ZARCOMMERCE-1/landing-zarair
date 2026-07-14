@@ -59,6 +59,78 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 statValues.forEach(el => counterObserver.observe(el));
 
+// === DYNAMIC ROADMAP PHASES ===
+// Configure your roadmap phases here
+window.roadmapPhases = [
+  {
+    title: "Token Creation & Launch",
+    description: "Establish tokenomics, create the ZARAi token, and launch the token sale."
+  },
+  {
+    title: "Fundraising",
+    description: "Raising $140M through token sales to fund airline operations and fleet acquisition."
+  },
+  {
+    title: "Exchange Listing",
+    description: "List ZARAi on major exchanges for global liquidity and trading."
+  },
+  {
+    title: "App & Licensing",
+    description: "Develop the ZARAir booking app and obtain airline operating licenses."
+  },
+  {
+    title: "First Commercial Flights",
+    description: "Launch initial routes with quality used aircraft on underserved corridors."
+  },
+  {
+    title: "International Expansion",
+    description: "Scale operations across borders, activate token rewards, and transition to DAO governance."
+  }
+];
+
+// Set the current active phase index (0-5)
+// Change this number to update which phase shows as "Current"
+window.currentPhaseIndex = 0;
+
+// === END DYNAMIC ROADMAP PHASES ===
+
+// Render roadmap phases dynamically
+function renderRoadmap() {
+  const container = document.getElementById('roadmap-container');
+  if (!container) return;
+
+  container.innerHTML = roadmapPhases.map((phase, index) => {
+    const isActive = index === currentPhaseIndex;
+    const phaseLabel = isActive ? `Phase ${index + 1} — Current` : `Phase ${index + 1}`;
+    const activeClass = isActive ? 'active' : '';
+    const dotClass = isActive ? 'timeline-dot active' : 'timeline-dot';
+
+    return `
+      <div class="timeline-item reveal ${activeClass}">
+        <div class="${dotClass}"></div>
+        <div class="timeline-content">
+          <div class="phase">${phaseLabel}</div>
+          <h3>${phase.title}</h3>
+          <p>${phase.description}</p>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Initialize roadmap on page load
+document.addEventListener('DOMContentLoaded', () => {
+  renderRoadmap();
+  
+  // Manually trigger reveal for dynamically rendered timeline items
+  setTimeout(() => {
+    const timelineItems = document.querySelectorAll('.timeline-item.reveal');
+    timelineItems.forEach(item => {
+      item.classList.add('visible');
+    });
+  }, 100);
+});
+
 // Hero subtitle cycling
 const cycleWord = document.querySelector('.cycle-word');
 const features = [
