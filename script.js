@@ -58,3 +58,31 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 statValues.forEach(el => counterObserver.observe(el));
+
+// Hero subtitle cycling
+const cycleWord = document.querySelector('.cycle-word');
+const features = [
+  'Low-Cost Flights',
+  'Gold-Linked Value',
+  '1,200 km Rewards',
+  'Transparent Pricing',
+  'Global Routes',
+  'Flight Rewards'
+];
+let featureIndex = 0;
+let cycling = true;
+
+function nextFeature() {
+  if (!cycling) return;
+  cycleWord.classList.add('hidden');
+}
+
+cycleWord.addEventListener('transitionend', () => {
+  if (cycleWord.classList.contains('hidden')) {
+    featureIndex = (featureIndex + 1) % features.length;
+    cycleWord.textContent = features[featureIndex];
+    cycleWord.classList.remove('hidden');
+  }
+});
+
+setInterval(nextFeature, 3000);
