@@ -119,9 +119,9 @@ function renderRoadmap() {
 }
 
 // Initialize roadmap on page load
-document.addEventListener('DOMContentLoaded', () => {
+function initRoadmap() {
   renderRoadmap();
-  
+
   // Manually trigger reveal for dynamically rendered timeline items
   setTimeout(() => {
     const timelineItems = document.querySelectorAll('.timeline-item.reveal');
@@ -129,7 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
       item.classList.add('visible');
     });
   }, 100);
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRoadmap);
+} else {
+  initRoadmap();
+}
 
 // Hero subtitle cycling
 const cycleWord = document.querySelector('.cycle-word');
