@@ -1,3 +1,4 @@
+import { constants } from "./constants";
 import { getAddress, type Address } from "viem";
 
 function requireValue(value: string | undefined, name: string) {
@@ -13,7 +14,7 @@ function requireAddress(value: string | undefined, name: string): Address {
 }
 
 const configuredChainId = Number(
-  requireValue(process.env.NEXT_PUBLIC_CHAIN_ID, "NEXT_PUBLIC_CHAIN_ID"),
+  requireValue(constants.NEXT_PUBLIC_CHAIN_ID, "NEXT_PUBLIC_CHAIN_ID"),
 );
 
 if (configuredChainId !== 56) {
@@ -22,23 +23,23 @@ if (configuredChainId !== 56) {
 
 export const CHAIN_ID = configuredChainId;
 export const CHAIN_NAME = requireValue(
-  process.env.NEXT_PUBLIC_CHAIN_NAME,
+  constants.NEXT_PUBLIC_CHAIN_NAME,
   "NEXT_PUBLIC_CHAIN_NAME",
 );
 export const ZARAI_TOKEN_ADDRESS = requireAddress(
-  process.env.NEXT_PUBLIC_ZARAI_TOKEN_ADDRESS,
+  constants.NEXT_PUBLIC_ZARAI_TOKEN_ADDRESS,
   "NEXT_PUBLIC_ZARAI_TOKEN_ADDRESS",
 );
 export const SALE_CONTRACT_ADDRESS = requireAddress(
-  process.env.NEXT_PUBLIC_SALE_CONTRACT_ADDRESS,
+  constants.NEXT_PUBLIC_SALE_CONTRACT_ADDRESS,
   "NEXT_PUBLIC_SALE_CONTRACT_ADDRESS",
 );
 export const PAYMENT_TOKEN_ADDRESS = requireAddress(
-  process.env.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS,
+  constants.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS,
   "NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS",
 );
 export const BSCSCAN_BASE_URL = requireValue(
-  process.env.NEXT_PUBLIC_BSCSCAN_BASE_URL,
+  constants.NEXT_PUBLIC_BSCSCAN_BASE_URL,
   "NEXT_PUBLIC_BSCSCAN_BASE_URL",
 ).replace(/\/$/, "");
 
