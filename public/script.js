@@ -67,12 +67,12 @@ window.roadmapPhases = [
     description: "Establish tokenomics, create the ZARAi token, and launch the token sale."
   },
   {
-    title: "Fundraising",
-    description: "Raising $140M through token sales to fund airline operations and fleet acquisition."
+    title: "Token Sale",
+    description: "Operate the verified ZARAI sale contract on BNB Chain with USDT payments."
   },
   {
-    title: "Exchange Listing",
-    description: "List ZARAi on major exchanges for global liquidity and trading."
+    title: "Ecosystem Readiness",
+    description: "Evaluate future integrations and distribution channels subject to technical, legal, and partner review."
   },
   {
     title: "App & Licensing",
@@ -141,8 +141,8 @@ if (document.readyState === 'loading') {
 const cycleWord = document.querySelector('.cycle-word');
 const features = [
   'Low-Cost Flights',
-  'Gold-Linked Value',
-  '1,200 km Rewards',
+  'On-Chain Purchase',
+  'Planned Travel Utility',
   'Transparent Pricing',
   'Global Routes',
   'Flight Rewards'

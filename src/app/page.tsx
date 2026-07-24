@@ -1,4 +1,15 @@
 import Image from "next/image";
+import { BuyZaraiModal } from "@/components/BuyZaraiModal";
+import { ConnectWalletButton } from "@/components/ConnectWalletButton";
+import { LiveSaleInventory } from "@/components/LiveSaleInventory";
+import { LiveTokenPrice } from "@/components/LiveTokenPrice";
+import { SaleStatusBadge } from "@/components/SaleStatusBadge";
+import {
+  BSCSCAN_BASE_URL,
+  PAYMENT_TOKEN_ADDRESS,
+  SALE_CONTRACT_ADDRESS,
+  ZARAI_TOKEN_ADDRESS,
+} from "@/lib/contracts";
 
 export default function Home() {
   return (
@@ -11,7 +22,7 @@ export default function Home() {
             marginTop: "-2px",
           }}><path d="M12.382 5.304 10.096 7.59l.006.02L11.838 14a.908.908 0 0 1-.211.794l-.573.573a.339.339 0 0 1-.566-.08l-2.348-4.25-.745-.746-1.97 1.97a3.311 3.311 0 0 1-.75.504l.44 1.447a.875.875 0 0 1-.199.79l-.175.176a.477.477 0 0 1-.672 0l-1.04-1.039-.018-.02-.788-.786-.02-.02-1.038-1.039a.477.477 0 0 1 0-.672l.176-.176a.875.875 0 0 1 .79-.197l1.447.438a3.322 3.322 0 0 1 .504-.75l1.97-1.97-.746-.744-4.25-2.348a.339.339 0 0 1-.08-.566l.573-.573a.909.909 0 0 1 .794-.211l6.39 1.736.02.006 2.286-2.286c.37-.372 1.621-1.02 1.993-.65.37.372-.279 1.622-.65 1.993z" /></svg>
           ZARAIR</div>
-        <button className="wallet-btn">Connect Wallet</button>
+        <ConnectWalletButton />
       </nav>
 
       <section className="hero">
@@ -53,9 +64,7 @@ export default function Home() {
           <div className="particle"></div>
         </div>
 
-        <span className="hero-badge"><span className="pulse"></span>
-          <span className="content">
-            <svg fill="inherit" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.62,464H160a16,16,0,0,1-14.57-22.6l64.46-142.25L113.1,297,77.8,339.77C71.07,348.23,65.7,352,52,352H34.08a17.66,17.66,0,0,1-14.7-7.06c-2.38-3.21-4.72-8.65-2.44-16.41l19.82-71c.15-.53.33-1.06.53-1.58a.38.38,0,0,0,0-.15,14.82,14.82,0,0,1-.53-1.59L16.92,182.76c-2.15-7.61.2-12.93,2.56-16.06a16.83,16.83,0,0,1,13.6-6.7H52c10.23,0,20.16,4.59,26,12l34.57,42.05,97.32-1.44-64.44-142A16,16,0,0,1,160,48h26.91a25,25,0,0,1,19.35,9.8l125.05,152,57.77-1.52c4.23-.23,15.95-.31,18.66-.31C463,208,496,225.94,496,256c0,9.46-3.78,27-29.07,38.16-14.93,6.6-34.85,9.94-59.21,9.94-2.68,0-14.37-.08-18.66-.31l-57.76-1.54-125.36,152A25,25,0,0,1,186.62,464Z" /></svg>Live Token Sale — ZARAir</span></span>
+        <SaleStatusBadge />
 
         <div className="coin-wrapper">
           <div className="coin">
@@ -73,10 +82,8 @@ export default function Home() {
           <span className="subtitle-cycle"><span className="cycle-word">Low-Cost Flights</span></span>
         </p>
         <div className="hero-buttons">
-          <button className="btn-primary">Buy Now</button>
-          <a href="#features">
-            <button className="btn-secondary">Learn More</button>
-          </a>
+          <BuyZaraiModal />
+          <a href="#features" className="btn-secondary">Learn More</a>
         </div>
       </section>
 
@@ -102,7 +109,7 @@ export default function Home() {
               </svg>
             </div>
             <h3>Flight Rewards</h3>
-            <p>Smart contract-verified flight credits and gold-linked token rewards, transparent and Reliable.</p>
+            <p>Wallet-based access and on-chain transactions built for transparent participation in the ZARAI ecosystem.</p>
           </div>
           <div className="feature-card reveal reveal-delay-3">
             <div className="feature-icon">
@@ -122,7 +129,7 @@ export default function Home() {
               </svg>
             </div>
             <h3>Transparent Pricing</h3>
-            <p>No hidden fees, no surprises. Gold-based pricing and verified transactions you can trust.</p>
+            <p>The active USDT price comes directly from the verified sale contract, and each transaction is visible on BscScan.</p>
           </div>
         </div>
       </section>
@@ -132,17 +139,17 @@ export default function Home() {
       <section className="token-utility" id="utility">
         <div className="section-header reveal">
           <h2>ZARAI</h2>
-          <h2>Your Free Ticket to the Sky</h2>
-          <p>Real-world utility that connects your tokens to actual flights and rewards.</p>
+          <h2>Planned Utility for Travel</h2>
+          <p>Proposed flight-related benefits remain subject to future launch terms and availability.</p>
         </div>
         <div className="utility-grid">
           <div className="utility-card reveal reveal-delay-1">
             <div className="utility-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="inherit" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" > <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" /></svg>
             </div>
-            <h3>Free Flights</h3>
-            <p>Hold your ZARAi tokens for 6 months and unlock up to 1,200 km of free flights on ZARAir routes.</p>
-            <span className="highlight">1,200 km reward</span>
+            <h3>Flight Benefits</h3>
+            <p>The roadmap includes future flight-credit benefits for eligible token holders, subject to published program terms.</p>
+            <span className="highlight">Planned travel rewards</span>
           </div>
           <div className="utility-card reveal reveal-delay-2">
             <div className="utility-icon">
@@ -150,9 +157,9 @@ export default function Home() {
                 <path d="M3.99923 21H19.9992M11.9992 21V7M11.9992 7C13.1038 7 13.9992 6.10457 13.9992 5M11.9992 7C10.8947 7 9.99923 6.10457 9.99923 5M13.9992 5C13.9992 3.89543 13.1038 3 11.9992 3C10.8947 3 9.99923 3.89543 9.99923 5M13.9992 5H19.9992M9.99923 5H3.99923M5.99923 17C7.51177 17 8.76287 16.1584 8.96934 14.7513C8.98242 14.6621 8.98897 14.6175 8.98385 14.5186C8.98031 14.4503 8.95717 14.3256 8.93599 14.2605C8.90531 14.1664 8.86812 14.1003 8.79375 13.968L5.99923 9L3.2047 13.968C3.13575 14.0906 3.10128 14.1519 3.06939 14.2584C3.04977 14.3239 3.02706 14.4811 3.02735 14.5494C3.02781 14.6606 3.03453 14.6899 3.04799 14.7486C3.30295 15.86 4.5273 17 5.99923 17ZM17.9992 17C19.5118 17 20.7629 16.1584 20.9693 14.7513C20.9824 14.6621 20.989 14.6175 20.9838 14.5186C20.9803 14.4503 20.9572 14.3256 20.936 14.2605C20.9053 14.1664 20.8681 14.1003 20.7937 13.968L17.9992 9L15.2047 13.968C15.1358 14.0906 15.1013 14.1519 15.0694 14.2584C15.0498 14.3239 15.0271 14.4811 15.0273 14.5494C15.0278 14.6606 15.0345 14.6899 15.048 14.7486C15.303 15.86 16.5273 17 17.9992 17Z" stroke="inherit" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h3>Gold-Linked Value</h3>
-            <p>Each token is backed by the value of 1 gram of gold — giving your investment a tangible floor.</p>
-            <span className="highlight">1g gold per token</span>
+            <h3>On-Chain Purchase</h3>
+            <p>Buy ZARAI with USDT through the verified sale contract on BNB Chain Mainnet.</p>
+            <span className="highlight">Verifiable on BscScan</span>
           </div>
           <div className="utility-card reveal reveal-delay-3">
             <div className="utility-icon">
@@ -161,8 +168,8 @@ export default function Home() {
               </svg>
             </div>
             <h3>Flexible Rewards</h3>
-            <p>Choose your reward :<br></br>1. Flight credits 1.200 Km, or<br></br>2. Cash linked to the Gold value, or<br></br>3. Benefit from token appreciation.</p>
-            <span className="highlight">Your choice</span>
+            <p>Planned token utility is designed around future flight benefits and participation in the ZARAir travel ecosystem.</p>
+            <span className="highlight">Planned utility</span>
           </div>
         </div>
       </section>
@@ -173,7 +180,7 @@ export default function Home() {
         <div className="tokenomics-inner">
           <div className="section-header reveal">
             <h2>Tokenomics</h2>
-            <p>An intelligently designed tokenomics framework that promotes price stability and supports sustainable long-term value through gold-backed assets.</p>
+            <p>Contract-based token distribution with a live USDT sale price that can be independently verified on BNB Chain.</p>
           </div>
 
           <div className="tokenomics-layout">
@@ -183,16 +190,16 @@ export default function Home() {
                 <div className="stat-value" data-target="1.4" data-suffix="M" data-decimal="1">0M</div>
               </div>
               <div className="stat-card reveal reveal-delay-2">
-                <div className="stat-label">Circulating</div>
-                <div className="stat-value" data-target="0.56" data-decimal="2" data-suffix="M">0M</div>
+                <div className="stat-label">Live Sale Inventory</div>
+                <LiveSaleInventory />
               </div>
               <div className="stat-card reveal reveal-delay-3">
-                <div className="stat-label">Current Price</div>
-                <div className="stat-value" data-target="140" data-prefix="$" data-suffix="">$0</div>
+                <div className="stat-label">Live Sale Price</div>
+                <LiveTokenPrice />
               </div>
               <div className="stat-card reveal reveal-delay-4">
-                <div className="stat-label">Market Cap</div>
-                <div className="stat-value" data-target="196" data-prefix="$" data-suffix="M">$0M</div>
+                <div className="stat-label">Payment Token</div>
+                <div className="stat-value">USDT</div>
               </div>
             </div>
 
@@ -261,28 +268,25 @@ export default function Home() {
               }}><path d="M12.382 5.304 10.096 7.59l.006.02L11.838 14a.908.908 0 0 1-.211.794l-.573.573a.339.339 0 0 1-.566-.08l-2.348-4.25-.745-.746-1.97 1.97a3.311 3.311 0 0 1-.75.504l.44 1.447a.875.875 0 0 1-.199.79l-.175.176a.477.477 0 0 1-.672 0l-1.04-1.039-.018-.02-.788-.786-.02-.02-1.038-1.039a.477.477 0 0 1 0-.672l.176-.176a.875.875 0 0 1 .79-.197l1.447.438a3.322 3.322 0 0 1 .504-.75l1.97-1.97-.746-.744-4.25-2.348a.339.339 0 0 1-.08-.566l.573-.573a.909.909 0 0 1 .794-.211l6.39 1.736.02.006 2.286-2.286c.37-.372 1.621-1.02 1.993-.65.37.372-.279 1.622-.65 1.993z" /></svg>ZARAIR</div>
               <p>Secure, efficient, global airline travel.</p>
               <div style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.8 }}>
-                <span style={{ color: "var(--sky-blue)" }}>$140M</span> Funding Goal &middot;
-                <span style={{ color: "var(--primary-gold)" }}>1.4M</span> Tokens &middot;
-                <span style={{ color: "var(--accent-gold)" }}>1,200 km</span> Rewards
+                <span style={{ color: "var(--sky-blue)" }}>BNB Chain Mainnet</span> &middot;
+                <span style={{ color: "var(--primary-gold)" }}> USDT payments</span> &middot;
+                <span style={{ color: "var(--accent-gold)" }}> Live contract pricing</span>
               </div>
 
             </div>
             <div className="footer-links">
               <h4>Resources</h4>
               <ul>
-                <li><a href="#">Whitepaper</a></li>
-                <li><a href="#">Audit Report</a></li>
-                <li><a href="#">Smart Contract</a></li>
-                <li><a href="#">Documentation</a></li>
+                <li><a href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}#code`} target="_blank" rel="noreferrer">Verified Sale Contract</a></li>
+                <li><a href={`${BSCSCAN_BASE_URL}/token/${ZARAI_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">ZARAI Token</a></li>
+                <li><a href={`${BSCSCAN_BASE_URL}/token/${PAYMENT_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">Payment Token</a></li>
               </ul>
             </div>
             <div className="footer-links">
-              <h4>Community</h4>
+              <h4>Network</h4>
               <ul>
-                <li><a href="#">Discord</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Telegram</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href={BSCSCAN_BASE_URL} target="_blank" rel="noreferrer">BscScan Explorer</a></li>
+                <li><a href="https://www.bnbchain.org/en" target="_blank" rel="noreferrer">BNB Chain</a></li>
               </ul>
             </div>
           </div>
