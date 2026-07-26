@@ -83,7 +83,7 @@ export default function Home() {
         </p>
         <div className="hero-buttons">
           <BuyZaraiModal />
-          <a href="#features" className="btn-secondary">Learn More</a>
+          <a href="/how-to-buy" className="btn-tertiary">How to Buy</a>
         </div>
       </section>
 
