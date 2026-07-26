@@ -1,11 +1,8 @@
-"use client";
-
 import "../style.css";
-import { Providers } from "@/app/providers";
 
 export default function HowToBuy() {
   return (
-    <Providers>
+    <>
       <nav>
         <a href="/" className="logo" style={{ textDecoration: "none" }}>
           <svg
@@ -143,6 +140,6 @@ export default function HowToBuy() {
           </div>
         </div>
       </footer>
-    </Providers>
+    </>
   );
 }
