@@ -1,9 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { BuyZaraiModal } from "@/components/BuyZaraiModal";
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { LiveSaleInventory } from "@/components/LiveSaleInventory";
 import { LiveTokenPrice } from "@/components/LiveTokenPrice";
+import { Roadmap } from "@/components/Roadmap";
 import { SaleStatusBadge } from "@/components/SaleStatusBadge";
+import { useNavScroll } from "@/hooks/useNavScroll";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useSubtitleCycle } from "@/hooks/useSubtitleCycle";
 import {
   BSCSCAN_BASE_URL,
   PAYMENT_TOKEN_ADDRESS,
@@ -12,9 +19,13 @@ import {
 } from "@/lib/contracts";
 
 export default function Home() {
+  const navRef = useNavScroll();
+  const revealRef = useScrollReveal();
+  const subtitle = useSubtitleCycle();
+
   return (
-    <>
-      <nav>
+    <div ref={revealRef}>
+      <nav ref={navRef}>
         <div className="logo">
           <svg fill="inherit" viewBox="-2.5 -2.5 19 19" xmlns="http://www.w3.org/2000/svg" style={{
             verticalAlign: "middle",
@@ -79,7 +90,14 @@ export default function Home() {
         <h1>ZARAIR Token</h1>
         <p className="hero-subtitle">
           <span className="subtitle-static">Fly Smarter. Own the Sky.</span>
-          <span className="subtitle-cycle"><span className="cycle-word">Low-Cost Flights</span></span>
+          <span className="subtitle-cycle">
+            <span
+              className={`cycle-word${subtitle.isHidden ? " hidden" : ""}`}
+              onTransitionEnd={subtitle.onTransitionEnd}
+            >
+              {subtitle.text}
+            </span>
+          </span>
         </p>
         <div className="hero-buttons">
           <BuyZaraiModal />
@@ -187,7 +205,7 @@ export default function Home() {
             <div className="stats-grid">
               <div className="stat-card reveal reveal-delay-1">
                 <div className="stat-label">Total Supply</div>
-                <div className="stat-value" data-target="1.4" data-suffix="M" data-decimal="1">0M</div>
+                <AnimatedCounter target={1.4} suffix="M" decimals={1} />
               </div>
               <div className="stat-card reveal reveal-delay-2">
                 <div className="stat-label">Live Sale Inventory</div>
@@ -250,8 +268,7 @@ export default function Home() {
             <h2>Taking Flight</h2>
             <p>Our journey from token launch to global airline — one milestone at a time.</p>
           </div>
-          <div className="timeline" id="roadmap-container">
-          </div>
+          <Roadmap />
         </div>
       </section>
 
@@ -295,6 +312,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import Script from "next/script";
 import { Providers } from "@/app/providers";
 import "./style.css";
 
@@ -54,7 +53,6 @@ export default function RootLayout({
       <body>
         <Providers>{children}</Providers>
       </body>
-      <Script src="/script.js" strategy="afterInteractive" />
     </html>
   );
 }
