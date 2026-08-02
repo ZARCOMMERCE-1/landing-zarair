@@ -38,6 +38,24 @@ export const PAYMENT_TOKEN_ADDRESS = requireAddress(
   constants.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS,
   "NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS",
 );
+export const TREASURY_WALLET_ADDRESS = requireAddress(
+  constants.NEXT_PUBLIC_TREASURY_WALLET,
+  "NEXT_PUBLIC_TREASURY_WALLET",
+);
+export const INITIAL_SALE_ALLOCATION = requireValue(
+  constants.NEXT_PUBLIC_INITIAL_SALE_ALLOCATION,
+  "NEXT_PUBLIC_INITIAL_SALE_ALLOCATION",
+);
+
+if (
+  !/^\d+(\.\d+)?$/.test(INITIAL_SALE_ALLOCATION) ||
+  Number(INITIAL_SALE_ALLOCATION) <= 0
+) {
+  throw new Error(
+    "NEXT_PUBLIC_INITIAL_SALE_ALLOCATION must be a positive token amount.",
+  );
+}
+
 export const BSCSCAN_BASE_URL = requireValue(
   constants.NEXT_PUBLIC_BSCSCAN_BASE_URL,
   "NEXT_PUBLIC_BSCSCAN_BASE_URL",

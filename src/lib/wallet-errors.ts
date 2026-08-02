@@ -1,10 +1,11 @@
-type WalletAction = "connect" | "switch" | "approve" | "purchase";
+type WalletAction = "connect" | "switch" | "approve" | "purchase" | "admin";
 
 const actionLabels: Record<WalletAction, string> = {
   connect: "Wallet connection",
   switch: "Network switch",
   approve: "USDT approval",
   purchase: "Purchase",
+  admin: "Admin transaction",
 };
 
 export function getWalletErrorMessage(

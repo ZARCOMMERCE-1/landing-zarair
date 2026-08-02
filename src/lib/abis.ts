@@ -42,6 +42,17 @@ export const erc20Abi = [
   },
 ] as const;
 
+export const tokensPurchasedEvent = {
+  type: "event",
+  name: "TokensPurchased",
+  anonymous: false,
+  inputs: [
+    { indexed: true, name: "buyer", type: "address" },
+    { indexed: false, name: "zaraiAmount", type: "uint256" },
+    { indexed: false, name: "paymentAmount", type: "uint256" },
+  ],
+} as const;
+
 // Minimal interface taken from the verified ZarAirTokenSale contract on BscScan.
 export const saleAbi = [
   {
@@ -99,5 +110,54 @@ export const saleAbi = [
     stateMutability: "view",
     inputs: [],
     outputs: [{ name: "", type: "address" }],
+  },
+  {
+    type: "function",
+    name: "setSaleEnabled",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "enabled", type: "bool" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "setTokenPrice",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "newTokenPrice", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "withdrawUnsoldTokens",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "to", type: "address" },
+      { name: "amount", type: "uint256" },
+    ],
+    outputs: [],
+  },
+  tokensPurchasedEvent,
+  {
+    type: "event",
+    name: "PriceUpdated",
+    anonymous: false,
+    inputs: [
+      { indexed: false, name: "oldPrice", type: "uint256" },
+      { indexed: false, name: "newPrice", type: "uint256" },
+    ],
+  },
+  {
+    type: "event",
+    name: "SaleStatusUpdated",
+    anonymous: false,
+    inputs: [{ indexed: false, name: "enabled", type: "bool" }],
+  },
+  {
+    type: "event",
+    name: "UnsoldTokensWithdrawn",
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "to", type: "address" },
+      { indexed: false, name: "amount", type: "uint256" },
+    ],
   },
 ] as const;

@@ -25,6 +25,26 @@ export function AnimatedCounter({
     const el = ref.current;
     if (!el) return;
 
+    function runAnimation() {
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function update(currentTime: number) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutExpo(progress);
+        const current = eased * target;
+
+        setDisplay(prefix + current.toFixed(decimals) + suffix);
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,26 +61,6 @@ export function AnimatedCounter({
     observer.observe(el);
     return () => observer.disconnect();
   }, [target, prefix, suffix, decimals]);
-
-  function runAnimation() {
-    const duration = 2000;
-    const startTime = performance.now();
-
-    function update(currentTime: number) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = easeOutExpo(progress);
-      const current = eased * target;
-
-      setDisplay(prefix + current.toFixed(decimals) + suffix);
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    }
-
-    requestAnimationFrame(update);
-  }
 
   return (
     <div ref={ref} className="stat-value">
