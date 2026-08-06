@@ -26,6 +26,15 @@ export function getWalletErrorMessage(
   }
 
   if (
+    action === "connect" &&
+    (message.includes("not installed") ||
+      message.includes("no provider") ||
+      message.includes("failed to open"))
+  ) {
+    return "MetaMask could not be opened. Install or update the MetaMask app and try again.";
+  }
+
+  if (
     message.includes("insufficient funds") ||
     message.includes("insufficient balance for gas") ||
     message.includes("exceeds the balance")

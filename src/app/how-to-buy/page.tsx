@@ -80,14 +80,17 @@ export default function HowToBuy() {
                 <a href="https://metamask.io/download" target="_blank" rel="noreferrer">
                   metamask.io
                 </a>{" "}
-                and download the browser extension.
+                and choose the official browser extension or mobile app for
+                your device.
               </li>
               <li>
-                MetaMask is available for Chrome, Firefox, Brave, and Edge.
+                On mobile, install MetaMask from the verified App Store or
+                Google Play link on the MetaMask download page.
               </li>
               <li>
-                Click &ldquo;Add to Browser&rdquo; and confirm the extension
-                installation.
+                On desktop, MetaMask is available for Chrome, Firefox, Brave,
+                and Edge. Select &ldquo;Add to Browser&rdquo; and confirm the
+                extension installation.
               </li>
             </ul>
           </div>
@@ -147,6 +150,11 @@ export default function HowToBuy() {
               <li>
                 Click <strong>&ldquo;Connect Wallet&rdquo;</strong> on the{" "}
                 <Link href="/">home page</Link> to link your MetaMask.
+              </li>
+              <li>
+                On mobile Chrome, the connect button opens the installed
+                MetaMask app. Approve the connection there, then return to
+                Chrome to continue.
               </li>
               <li>
                 Click <strong>&ldquo;Buy Now&rdquo;</strong> and enter the

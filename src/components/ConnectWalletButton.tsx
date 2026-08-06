@@ -14,6 +14,21 @@ function shortenAddress(address: string) {
   return `${address.slice(0, 6)}…${address.slice(-4)}`;
 }
 
+function isMobileBrowser() {
+  if (typeof navigator === "undefined") {
+    return false;
+  }
+
+  return (
+    /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+    (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
+  );
+}
+
+function hasInjectedWallet() {
+  return typeof window !== "undefined" && "ethereum" in window;
+}
+
 export function ConnectWalletButton() {
   const { address, chainId, isConnected } = useAccount();
   const { connectors, connectAsync, isPending: isConnecting } = useConnect();
@@ -27,15 +42,26 @@ export function ConnectWalletButton() {
     setError("");
 
     try {
-      const connector =
-        connectors.find((item) => item.type === "injected") ?? connectors[0];
+      const injectedConnector = connectors.find(
+        (item) => item.type === "injected",
+      );
+      const metaMaskConnector = connectors.find(
+        (item) => item.type === "metaMask",
+      );
+      const shouldUseMetaMaskConnect =
+        isMobileBrowser() && !hasInjectedWallet();
+      const connector = shouldUseMetaMaskConnect
+        ? (metaMaskConnector ?? injectedConnector)
+        : (injectedConnector ?? metaMaskConnector);
 
       if (!connector) {
-        setError("No injected wallet was found. Install MetaMask and try again.");
+        setError(
+          "MetaMask connection is unavailable. Install MetaMask and try again.",
+        );
         return;
       }
 
-      await connectAsync({ connector });
+      await connectAsync({ connector, chainId: CHAIN_ID });
     } catch (connectError) {
       setError(getWalletErrorMessage(connectError, "connect"));
     }

@@ -2,13 +2,13 @@
 
 Next.js App Router landing page with a live ZARAI token-sale flow on BNB Chain Mainnet.
 
-The frontend connects to an injected wallet such as MetaMask, validates chain ID `56`, reads the live sale status and price, displays wallet balances, requests an exact USDT allowance when needed, and calls the verified sale contract to purchase ZARAI.
+The frontend connects through an injected wallet on desktop or MetaMask Connect on mobile Chrome, validates chain ID `56`, reads the live sale status and price, displays wallet balances, requests an exact USDT allowance when needed, and calls the verified sale contract to purchase ZARAI.
 
 ## Requirements
 
 - Node.js 20.9 or newer
 - pnpm
-- MetaMask or another injected EVM wallet
+- MetaMask browser extension or MetaMask mobile app
 - USDT on BNB Chain Mainnet for the purchase
 - BNB on BNB Chain Mainnet for network fees
 
@@ -32,9 +32,9 @@ NEXT_PUBLIC_BSCSCAN_API_KEY=
 ```
 
 `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` is reserved for an optional future
-WalletConnect connector; the current interface uses an injected wallet such as
-MetaMask. `NEXT_PUBLIC_BSCSCAN_API_KEY` is optional and is not required for the
-dashboard or its recent event-log view.
+WalletConnect connector. Mobile MetaMask support uses MetaMask Connect and does
+not require this value. `NEXT_PUBLIC_BSCSCAN_API_KEY` is optional and is not
+required for the dashboard or its recent event-log view.
 
 ## Run locally
 
@@ -60,6 +60,14 @@ pnpm build
 3. If the wallet is on another network, select **Switch to BNB Chain**. The connector first requests `wallet_switchEthereumChain` and supplies the configured BNB Chain details if the wallet needs to add chain `56`.
 4. **Buy Now** is enabled only when the wallet is connected, BNB Chain is active, and the live sale contract reports that the sale is enabled.
 
+### Mobile Chrome and MetaMask
+
+Regular mobile Chrome does not expose MetaMask as an injected browser wallet.
+When no injected wallet is available on a mobile device, **Connect Wallet** uses
+MetaMask Connect to open the installed MetaMask app. Approve the connection in
+MetaMask, then return to Chrome to continue. The desktop extension and
+MetaMask's in-app browser continue to use the injected-wallet flow.
+
 ## Test a small purchase
 
 Use a wallet that contains a small amount of both USDT and BNB on BNB Chain Mainnet.
@@ -80,14 +88,15 @@ Open [http://localhost:3000/admin](http://localhost:3000/admin) after starting
 the project. The route is a public, read-only dashboard until the connected
 wallet matches the sale contract's live `owner()` value on BNB Chain.
 
-The dashboard uses the same injected-wallet provider as the landing page. It
-does not use a password, backend signer, private key, mnemonic, or seed phrase.
-All management requests are sent to the connected owner wallet for manual
-confirmation.
+The dashboard uses the same injected-wallet or MetaMask Connect provider as the
+landing page. It does not use a password, backend signer, private key, mnemonic,
+or seed phrase. All management requests are sent to the connected owner wallet
+for manual confirmation.
 
 ### Admin access
 
-1. Open `/admin` and connect an injected wallet.
+1. Open `/admin` and connect the owner wallet through the extension, MetaMask's
+   in-app browser, or the mobile Chrome deep link.
 2. Switch to BNB Chain Mainnet when prompted.
 3. The page reads `owner()` from the deployed sale contract and compares it to
    the connected address.
