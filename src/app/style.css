@@ -850,6 +850,72 @@ nav.scrolled .wallet-btn {
   max-width: 540px;
 }
 
+.how-to-video-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(74, 155, 217, 0.1), transparent 36%),
+    rgba(20, 20, 20, 0.68);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.how-to-video-heading {
+  margin-bottom: 1.2rem;
+}
+
+.how-to-video-heading > span {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--sky-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.how-to-video-heading h2 {
+  margin-bottom: 0.45rem;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-weight: 650;
+}
+
+.how-to-video-heading p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.how-to-video-frame {
+  overflow: hidden;
+  border: 1px solid rgba(74, 155, 217, 0.16);
+  border-radius: 15px;
+  background: #050505;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+.how-to-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  background: #050505;
+}
+
+.how-to-video-note {
+  margin-top: 1rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(255, 180, 84, 0.15);
+  border-radius: 10px;
+  background: rgba(255, 180, 84, 0.055);
+  color: #ffd19a;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
 .steps-container {
   display: flex;
   flex-direction: column;
@@ -991,6 +1057,15 @@ nav.scrolled .wallet-btn {
 
   .step-card {
     padding: 1.5rem;
+  }
+
+  .how-to-video-section {
+    padding: 1rem;
+    border-radius: 17px;
+  }
+
+  .how-to-video-frame {
+    border-radius: 11px;
   }
 }
 

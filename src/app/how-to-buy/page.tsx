@@ -35,6 +35,41 @@ export default function HowToBuy() {
           </p>
         </div>
 
+        <section
+          className="how-to-video-section"
+          aria-labelledby="learning-video-title"
+        >
+          <div className="how-to-video-heading">
+            <span>Video walkthrough</span>
+            <h2 id="learning-video-title">Learn how to buy ZARAI safely</h2>
+            <p id="learning-video-description">
+              Watch the complete purchase process, then use the written guide
+              below as a step-by-step reference.
+            </p>
+          </div>
+          <div className="how-to-video-frame">
+            {/* The detailed written guide below provides an equivalent text alternative. */}
+            <video
+              className="how-to-video"
+              controls
+              preload="metadata"
+              playsInline
+              aria-describedby="learning-video-description"
+            >
+              <source
+                src="/videos/zarair-how-to-buy.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support embedded videos. Use the written
+              buying guide below instead.
+            </video>
+          </div>
+          <p className="how-to-video-note">
+            Before confirming a transaction, make sure your wallet is on BNB
+            Chain and verify the official contract details shown on the site.
+          </p>
+        </section>
+
         <div className="steps-container">
           <div className="step-card">
             <div className="step-number">1</div>
