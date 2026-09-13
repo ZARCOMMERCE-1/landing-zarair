@@ -5,6 +5,7 @@ import {
   SALE_CONTRACT_ADDRESS,
   ZARAI_TOKEN_ADDRESS,
 } from "@/lib/contracts";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -28,6 +29,7 @@ export function Footer() {
               <li><a href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}#code`} target="_blank" rel="noreferrer">Verified Sale Contract</a></li>
               <li><a href={`${BSCSCAN_BASE_URL}/token/${ZARAI_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">ZARAI Token</a></li>
               <li><a href={`${BSCSCAN_BASE_URL}/token/${PAYMENT_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">Payment Token</a></li>
+              <li><Link href="/whitepaper">Whitepaper</Link></li>
             </ul>
           </div>
           <div className="footer-links">
