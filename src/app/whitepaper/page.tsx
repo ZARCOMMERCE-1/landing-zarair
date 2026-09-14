@@ -106,7 +106,7 @@ const WhitepaperPage = () => {
           <tr>
             <td style={{ textAlign: "center" }}><strong>13</strong></td>
             <td style={{ textAlign: "left" }}><strong>High Secondary Market Demand</strong></td>
-            <td style={{ textAlign: "left" }}>Only <strong>40%</strong> of the total token supply will be offered to the public; the remainder will be retained by the Zarkamres Investment Group. Due to the non-replicable supply and increasing demand post-airline launch, the secondary market is expected to become highly liquid and significantly more valuable.</td>
+            <td style={{ textAlign: "left" }}>Only <strong>40%</strong> of the total token supply will be offered to the public; the remainder will be retained by the Zarcommerce Trade and Investment Group. Due to the non-replicable supply and increasing demand post-airline launch, the secondary market is expected to become highly liquid and significantly more valuable.</td>
           </tr>
           <tr>
             <td style={{ textAlign: "center" }}><strong>14</strong></td>
@@ -116,7 +116,7 @@ const WhitepaperPage = () => {
           <tr>
             <td style={{ textAlign: "center" }}><strong>15</strong></td>
             <td style={{ textAlign: "left" }}><strong>Capital Guarantee</strong></td>
-            <td style={{ textAlign: "left" }}>ZARAi is backed by the <strong>Zarkamres Investment &amp; Commercial Group</strong>, which has over 23 years of operational history in multiple countries, offering a <strong>full &quot;Capital Guarantee&quot;</strong> . Legal token holders can return their tokens at any time according to the stipulated terms and conditions and receive <strong>120 US$</strong> per token. This eliminates any significant concern for investors.</td>
+            <td style={{ textAlign: "left" }}>ZARAi is backed by the <strong>Zarcommerce Trade and Investment Group</strong>, which has over 23 years of operational history in multiple countries, offering a <strong>full &quot;Capital Guarantee&quot;</strong> . Legal token holders can return their tokens at any time according to the stipulated terms and conditions and receive <strong>120 US$</strong> per token. This eliminates any significant concern for investors.</td>
           </tr>
         </tbody>
       </table>
@@ -258,7 +258,7 @@ const WhitepaperPage = () => {
       <p>The ZARAi project team comprises seasoned experts in the aviation, finance, and blockchain technology sectors. Leveraging their technical expertise and executive experience, the team is fully committed to realizing the project&#39;s vision.</p>
       <ul>
         <li><strong>Senior Management:</strong> Boasting over 25 years of experience in finance, international trade, and banking.</li>
-        <li><strong>Executive Backing:</strong> The <strong>Zarkamres Investment and Commercial Group</strong>, with over 23 years of operational history across multiple countries, serves as the primary backer of this project.</li>
+        <li><strong>Executive Backing:</strong> The <strong>Zarcommerce Trade and Investment Group</strong>, with over 23 years of operational history across multiple countries, serves as the primary backer of this project.</li>
       </ul>
       <hr></hr>
       <h2 id="-10-risk-management-"><strong>10. Risk Management</strong></h2>
