@@ -2,34 +2,19 @@
 
 const ROADMAP_PHASES = [
   {
-    title: "Token Creation & Launch",
+    title: "Token & Sale Contracts",
     description:
-      "Establish tokenomics, create the ZARAi token, and launch the token sale.",
+      "ZARAI and its USDT sale contract are deployed on BNB Smart Chain Mainnet.",
   },
   {
-    title: "Token Sale",
+    title: "Digital Services — Under Evaluation",
     description:
-      "Operate the verified ZARAI sale contract on BNB Chain with USDT payments.",
+      "Potential digital services require technical, commercial and regulatory review before implementation. No delivery date is confirmed.",
   },
   {
-    title: "Ecosystem Readiness",
+    title: "Future Concepts — Under Evaluation",
     description:
-      "Evaluate future integrations and distribution channels subject to technical, legal, and partner review.",
-  },
-  {
-    title: "App & Licensing",
-    description:
-      "Develop the ZARAir booking app and obtain airline operating licenses.",
-  },
-  {
-    title: "First Commercial Flights",
-    description:
-      "Launch initial routes with quality used aircraft on underserved corridors.",
-  },
-  {
-    title: "International Expansion",
-    description:
-      "Scale operations across borders, activate token rewards, and transition to DAO governance.",
+      "Potential reward and travel-related features are not implemented. Eligibility and redemption rules are not finalized, and no current on-chain claim to these benefits exists.",
   },
 ];
 

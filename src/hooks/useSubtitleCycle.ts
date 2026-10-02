@@ -3,12 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const FEATURES = [
-  "Low-Cost Flights",
-  "On-Chain Purchase",
-  "Planned Travel Utility",
-  "Transparent Pricing",
-  "Global Routes",
-  "Flight Rewards",
+  "BEP-20 Token",
+  "USDT Token Purchases",
+  "BNB Smart Chain Mainnet",
+  "Fixed Supply: 1,400,000 ZARAI",
+  "On-Chain Contract Details",
+  "Separate Token & Sale Contracts",
 ];
 
 export function useSubtitleCycle(intervalMs = 3000) {

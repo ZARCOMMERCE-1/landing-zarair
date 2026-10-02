@@ -3,17 +3,17 @@ export function TokenUtility() {
     <section className="token-utility" id="utility">
       <div className="section-header reveal">
         <h2>ZARAI</h2>
-        <h2>Planned Utility for Travel</h2>
-        <p>Proposed flight-related benefits remain subject to future launch terms and availability.</p>
+        <h2>Current Functionality &amp; Future Concepts</h2>
+        <p>The website provides a wallet-based purchase interface. Additional utility and reward mechanisms are under evaluation.</p>
       </div>
       <div className="utility-grid">
         <div className="utility-card reveal reveal-delay-1">
           <div className="utility-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="inherit" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" /></svg>
           </div>
-          <h3>Flight Benefits</h3>
-          <p>The roadmap includes future flight-credit benefits for eligible token holders, subject to published program terms.</p>
-          <span className="highlight">Planned travel rewards</span>
+          <h3>Future Concepts — Under Evaluation</h3>
+          <p>Potential utility, reward and travel-related features are not implemented. Any development requires separate technical, commercial and regulatory review.</p>
+          <span className="highlight">No current entitlement</span>
         </div>
         <div className="utility-card reveal reveal-delay-2">
           <div className="utility-icon">
@@ -22,7 +22,7 @@ export function TokenUtility() {
             </svg>
           </div>
           <h3>On-Chain Purchase</h3>
-          <p>Buy ZARAI with USDT through the verified sale contract on BNB Chain Mainnet.</p>
+          <p>The purchase interface supports buying ZARAI with USDT through the sale contract on BNB Smart Chain Mainnet.</p>
           <span className="highlight">Verifiable on BscScan</span>
         </div>
         <div className="utility-card reveal reveal-delay-3">
@@ -31,9 +31,9 @@ export function TokenUtility() {
               <path d="M3 17H21M12 8L10 12M12 8L14 12M12 8H7.5C6.83696 8 6.20107 7.73661 5.73223 7.26777C5.26339 6.79893 5 6.16304 5 5.5C5 4.83696 5.26339 4.20107 5.73223 3.73223C6.20107 3.26339 6.83696 3 7.5 3C11 3 12 8 12 8ZM12 8H16.5C17.163 8 17.7989 7.73661 18.2678 7.26777C18.7366 6.79893 19 6.16304 19 5.5C19 4.83696 18.7366 4.20107 18.2678 3.73223C17.7989 3.26339 17.163 3 16.5 3C13 3 12 8 12 8ZM6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V11.2C21 10.0799 21 9.51984 20.782 9.09202C20.5903 8.71569 20.2843 8.40973 19.908 8.21799C19.4802 8 18.9201 8 17.8 8H6.2C5.0799 8 4.51984 8 4.09202 8.21799C3.71569 8.40973 3.40973 8.71569 3.21799 9.09202C3 9.51984 3 10.0799 3 11.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="inherit" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <h3>Flexible Rewards</h3>
-          <p>Planned token utility is designed around future flight benefits and participation in the ZARAir travel ecosystem.</p>
-          <span className="highlight">Planned utility</span>
+          <h3>User Confirmation</h3>
+          <p>Review the contract, required USDT amount and network fees before signing. Connecting a wallet does not initiate a purchase.</p>
+          <span className="highlight">Separate approval and purchase</span>
         </div>
       </div>
     </section>

@@ -303,7 +303,7 @@ export function AdminSaleControls({
                 type="text"
                 inputMode="decimal"
                 autoComplete="off"
-                placeholder="140"
+                placeholder="Enter new price"
                 value={priceInput}
                 onChange={(event) => {
                   setPriceInput(event.target.value);

@@ -1,47 +1,35 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Providers } from "@/app/providers";
 import "./style.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "localhost:3000";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host.startsWith("localhost") ? "http" : "https");
-  const metadataBase = new URL(`${protocol}://${host}`);
+const title = "Zar Air (ZARAI) | Official Website";
+const description =
+  "Zar Air (ZARAI) is a BEP-20 token deployed on BNB Smart Chain for the Zar Air ecosystem.";
 
-  return {
-    metadataBase,
-    title: "ZARAIR Token | Fly Smarter. Own the Sky.",
-    description:
-      "Connect an injected wallet and purchase ZARAI with USDT through the verified sale contract on BNB Chain Mainnet.",
-    openGraph: {
-      title: "ZARAIR | ZARAI Token Sale",
-      description:
-        "Connect your wallet and buy ZARAI with USDT on BNB Chain Mainnet.",
-      type: "website",
-      images: [
-        {
-          url: "/og.png",
-          width: 1740,
-          height: 907,
-          alt: "ZARAIR ZARAI Token Sale on BNB Chain Mainnet",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "ZARAIR | ZARAI Token Sale",
-      description:
-        "Connect your wallet and buy ZARAI with USDT on BNB Chain Mainnet.",
-      images: ["/og.png"],
-    },
-  };
-}
+export const metadata: Metadata = {
+  metadataBase: new URL("https://zarair.com"),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  icons: {
+    icon: { url: "/assets/zarair-logo-64.png", type: "image/png", sizes: "64x64" },
+    apple: { url: "/assets/zarair-logo-64.png", type: "image/png", sizes: "64x64" },
+  },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title,
+    description,
+    siteName: "Zar Air",
+    url: "https://zarair.com",
+    type: "website",
+    images: [{
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Zar Air logo",
+    }],
+  },
+};
 
 export default function RootLayout({
   children,

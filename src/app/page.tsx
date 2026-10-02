@@ -26,8 +26,8 @@ export default function Home() {
       <section className="roadmap" id="roadmap">
         <div className="roadmap-inner">
           <div className="section-header reveal">
-            <h2>Taking Flight</h2>
-            <p>Our journey from token launch to global airline — one milestone at a time.</p>
+            <h2>Project Status &amp; Roadmap</h2>
+            <p>Current token infrastructure and proposed future utilities. Future features have no confirmed launch dates.</p>
           </div>
           <Roadmap />
         </div>

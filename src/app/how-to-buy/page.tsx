@@ -1,24 +1,29 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
+import { Footer } from "@/components/sections/Footer";
+import { BSCSCAN_BASE_URL, PAYMENT_TOKEN_ADDRESS } from "@/lib/contracts";
 import "../style.css";
+
+export const metadata: Metadata = {
+  title: "How to Buy ZARAI | Zar Air",
+  alternates: { canonical: "/how-to-buy" },
+  openGraph: {
+    url: "https://zarair.com/how-to-buy",
+    title: "How to Buy ZARAI | Zar Air",
+    description: "Purchase Zar Air (ZARAI) with USDT on BNB Smart Chain through the sale contract.",
+    siteName: "Zar Air",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Zar Air logo" }],
+  },
+};
 
 export default function HowToBuy() {
   return (
     <>
       <nav>
         <Link href="/" className="logo" style={{ textDecoration: "none" }}>
-          <svg
-            fill="inherit"
-            viewBox="-2.5 -2.5 19 19"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{
-              verticalAlign: "middle",
-              marginRight: "6px",
-              marginTop: "-2px",
-            }}
-          >
-            <path d="M12.382 5.304 10.096 7.59l.006.02L11.838 14a.908.908 0 0 1-.211.794l-.573.573a.339.339 0 0 1-.566-.08l-2.348-4.25-.745-.746-1.97 1.97a3.311 3.311 0 0 1-.75.504l.44 1.447a.875.875 0 0 1-.199.79l-.175.176a.477.477 0 0 1-.672 0l-1.04-1.039-.018-.02-.788-.786-.02-.02-1.038-1.039a.477.477 0 0 1 0-.672l.176-.176a.875.875 0 0 1 .79-.197l1.447.438a3.322 3.322 0 0 1 .504-.75l1.97-1.97-.746-.744-4.25-2.348a.339.339 0 0 1-.08-.566l.573-.573a.909.909 0 0 1 .794-.211l6.39 1.736.02.006 2.286-2.286c.37-.372 1.621-1.02 1.993-.65.37.372-.279 1.622-.65 1.993z" />
-          </svg>
-          ZARAIR
+          <Logo />
         </Link>
       </nav>
 
@@ -30,8 +35,13 @@ export default function HowToBuy() {
         <div className="how-to-header">
           <h1>How to Buy ZARAI</h1>
           <p>
-            New to crypto? Follow these steps to purchase ZARAI tokens through
-            the verified sale contract on BNB Chain.
+            These steps describe purchasing ZARAI tokens through
+            the sale contract on BNB Smart Chain Mainnet (chain ID 56).
+          </p>
+          <p>
+            ZARAI can lose all value. Availability may be subject to applicable
+            laws and restrictions in your jurisdiction. Read the{" "}
+            <Link href="/whitepaper#risk-information">risk information</Link> before purchasing.
           </p>
         </div>
 
@@ -41,7 +51,7 @@ export default function HowToBuy() {
         >
           <div className="how-to-video-heading">
             <span>Video walkthrough</span>
-            <h2 id="learning-video-title">Learn how to buy ZARAI safely</h2>
+            <h2 id="learning-video-title">ZARAI purchase walkthrough</h2>
             <p id="learning-video-description">
               Watch the complete purchase process, then use the written guide
               below as a step-by-step reference.
@@ -100,14 +110,15 @@ export default function HowToBuy() {
             <h3>Create Your Wallet</h3>
             <ul className="step-list">
               <li>
-                Open MetaMask and click &ldquo;Create a new wallet.&rdquo;
+                Open MetaMask, choose the wallet creation method available on
+                your device, and follow its setup instructions.
               </li>
               <li>Set a strong password to lock MetaMask on this device.</li>
               <li>
                 <strong>
-                  Write down your 12-word Secret Recovery Phrase
+                  If you choose Secret Recovery Phrase setup, back up the phrase
                 </strong>{" "}
-                on paper. This is the only way to recover your wallet.
+                as instructed by MetaMask and keep it private.
               </li>
               <li>
                 Never share your phrase with anyone. MetaMask staff will never
@@ -121,6 +132,7 @@ export default function HowToBuy() {
             <h3>Get USDT (BEP-20)</h3>
             <ul className="step-list">
               <li>ZARAI tokens are purchased with USDT on BNB Chain.</li>
+              <li>You also need BNB on BNB Smart Chain to pay network fees for approval and purchase.</li>
               <li>
                 Buy USDT on an exchange and withdraw it using the{" "}
                 <strong>BNB Smart Chain (BEP-20)</strong> network.
@@ -132,7 +144,7 @@ export default function HowToBuy() {
               <li>
                 You can verify your USDT contract is correct on{" "}
                 <a
-                  href="https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955"
+                  href={BSCSCAN_BASE_URL + "/token/" + PAYMENT_TOKEN_ADDRESS}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -157,12 +169,12 @@ export default function HowToBuy() {
                 Chrome to continue.
               </li>
               <li>
-                Click <strong>&ldquo;Buy Now&rdquo;</strong> and enter the
+                Click <strong>&ldquo;Purchase ZARAI&rdquo;</strong> and enter the
                 amount of ZARAI you want to purchase.
               </li>
               <li>
-                First, approve MetaMask to spend your USDT, then confirm the
-                purchase.
+                First, approve the sale contract to spend the required USDT
+                amount, then confirm the separate purchase transaction.
               </li>
               <li>
                 Each transaction requires a confirmation in your MetaMask popup
@@ -177,13 +189,7 @@ export default function HowToBuy() {
         </div>
       </main>
 
-      <footer>
-        <div className="footer-inner">
-          <div className="footer-bottom">
-            <p>&copy; 2026 ZARAIR Token. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

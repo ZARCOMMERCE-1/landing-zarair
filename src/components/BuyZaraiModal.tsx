@@ -326,7 +326,7 @@ export function BuyZaraiModal() {
           onClick={() => setIsOpen(true)}
           aria-describedby="buy-trigger-reason"
         >
-          Buy Now
+          Purchase ZARAI
         </button>
         <span id="buy-trigger-reason" className="buy-trigger-reason">
           {triggerReason}
@@ -404,7 +404,7 @@ export function BuyZaraiModal() {
 
             <div className="purchase-summary">
               <div>
-                <span>Live token price</span>
+                <span>Current sale contract price</span>
                 <strong>
                   {tokenPrice === undefined
                     ? "—"
@@ -474,6 +474,8 @@ export function BuyZaraiModal() {
             <p className="transaction-help">
               Approval and purchase are separate actions. Nothing is submitted
               until you confirm each request in your wallet.
+              {" "}The sale contract price is not a secondary-market price.
+              {" "}<a href="/whitepaper#risk-information">Read risk information</a>.
             </p>
 
             {(approvalHash || purchaseHash) && (

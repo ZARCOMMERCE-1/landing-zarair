@@ -60,9 +60,9 @@ export function Hero() {
         <div className="coin-shadow" />
       </div>
 
-      <h1>ZARAIR Token</h1>
+      <h1>Zar Air (ZARAI)</h1>
       <p className="hero-subtitle">
-        <span className="subtitle-static">Fly Smarter. Own the Sky.</span>
+        <span className="subtitle-static">A BEP-20 token on BNB Smart Chain for the Zar Air ecosystem.</span>
         <span className="subtitle-cycle">
           <span
             className={`cycle-word${subtitle.isHidden ? " hidden" : ""}`}
@@ -74,8 +74,14 @@ export function Hero() {
       </p>
       <div className="hero-buttons">
         <BuyZaraiModal />
+        <a href="#tokenomics" className="btn-secondary">Token Information</a>
         <a href="/how-to-buy" className="btn-tertiary">How to Buy</a>
       </div>
+      <p className="purchase-risk-note">
+        ZARAI can lose all value. Availability may be subject to applicable laws
+        and restrictions in your jurisdiction. {" "}
+        <a href="/whitepaper#risk-information">Read risk information</a> before purchasing.
+      </p>
     </section>
   );
 }

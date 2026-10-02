@@ -8,7 +8,9 @@ export const wagmiConfig = createConfig({
     injected({ shimDisconnect: true }),
     metaMask({
       dapp: {
-        name: "ZARAIR",
+        name: "Zar Air",
+        url: "https://zarair.com",
+        iconUrl: "https://zarair.com/assets/zarair-logo-64.png",
       },
       mobile: {
         // Regular mobile Chrome has no injected provider. MetaMask Connect

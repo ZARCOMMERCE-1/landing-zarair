@@ -76,7 +76,7 @@ export function AdminDashboard() {
   return (
     <div className="admin-shell">
       <header className="admin-topbar">
-        <Link href="/" className="admin-brand" aria-label="Return to ZarAir landing page">
+        <Link href="/" className="admin-brand" aria-label="Return to Zar Air landing page">
           <Logo className="admin-logo" />
           <span className="admin-product-label">Admin Dashboard</span>
         </Link>
@@ -222,7 +222,7 @@ export function AdminDashboard() {
 
       <footer className="admin-footer">
         <p>
-          ZARAIR admin tools never store private keys or sign transactions on
+          Zar Air admin tools never store private keys or sign transactions on
           behalf of a wallet.
         </p>
         <span>
