@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { formatUnits, parseUnits, type Hash } from "viem";
 import {
@@ -18,6 +19,7 @@ import {
   PAYMENT_TOKEN_DECIMALS,
   SALE_CONTRACT_ADDRESS,
   TOKEN_DECIMALS,
+  ZARAI_TOKEN_ADDRESS,
 } from "@/lib/contracts";
 import { getWalletErrorMessage } from "@/lib/wallet-errors";
 
@@ -41,6 +43,7 @@ export function BuyZaraiModal() {
   const [error, setError] = useState("");
   const [approvalHash, setApprovalHash] = useState<Hash>();
   const [purchaseHash, setPurchaseHash] = useState<Hash>();
+  const [riskAcknowledged, setRiskAcknowledged] = useState(false);
 
   const { address, chainId, isConnected } = useAccount();
   const publicClient = usePublicClient({ chainId: CHAIN_ID });
@@ -237,7 +240,7 @@ export function BuyZaraiModal() {
   }
 
   async function approveUsdt() {
-    if (!requiredUsdt || validationError || !publicClient) {
+    if (!requiredUsdt || validationError || !riskAcknowledged || !publicClient) {
       return;
     }
 
@@ -269,7 +272,7 @@ export function BuyZaraiModal() {
   }
 
   async function purchaseZarai() {
-    if (!amountWei || validationError || !publicClient) {
+    if (!amountWei || validationError || !riskAcknowledged || !publicClient) {
       return;
     }
 
@@ -323,7 +326,10 @@ export function BuyZaraiModal() {
           className="btn-primary"
           type="button"
           disabled={triggerDisabled}
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setRiskAcknowledged(false);
+            setIsOpen(true);
+          }}
           aria-describedby="buy-trigger-reason"
         >
           Purchase ZARAI
@@ -406,7 +412,9 @@ export function BuyZaraiModal() {
               <div>
                 <span>Current sale contract price</span>
                 <strong>
-                  {tokenPrice === undefined
+                  {saleReadError
+                    ? "Temporarily unavailable"
+                    : tokenPrice === undefined
                     ? "—"
                     : `${displayTokenAmount(
                         tokenPrice,
@@ -417,7 +425,9 @@ export function BuyZaraiModal() {
               <div>
                 <span>USDT required</span>
                 <strong>
-                  {requiredUsdt === undefined
+                  {saleReadError
+                    ? "Temporarily unavailable"
+                    : requiredUsdt === undefined
                     ? "—"
                     : `${displayTokenAmount(
                         requiredUsdt,
@@ -426,9 +436,11 @@ export function BuyZaraiModal() {
                 </strong>
               </div>
               <div>
-                <span>Sale inventory</span>
+                <span>Current sale inventory</span>
                 <strong>
-                  {saleInventory === undefined
+                  {saleReadError
+                    ? "Temporarily unavailable"
+                    : saleInventory === undefined
                     ? "—"
                     : `${displayTokenAmount(
                         saleInventory,
@@ -448,7 +460,8 @@ export function BuyZaraiModal() {
 
             {stage === "confirmed" && (
               <div className="transaction-notice success">
-                Purchase confirmed. Your refreshed ZARAI balance is shown above.
+                Purchase confirmed. Verify Success and the official Sale
+                Contract in the BscScan receipt, then check your ZARAI balance.
               </div>
             )}
 
@@ -462,11 +475,42 @@ export function BuyZaraiModal() {
               <p className="validation-message">{validationError}</p>
             )}
 
+            <p className="transaction-help">
+              {requiredUsdt !== undefined && allowance !== undefined && !needsApproval
+                ? "Your existing USDT allowance is sufficient for this amount. The next transaction executes the purchase."
+                : "If approval is needed, it authorizes the official Sale Contract to spend the exact USDT amount required for this purchase. The separate purchase transaction then executes the purchase."}
+              {" "}Review the spender address and allowance amount in your wallet before signing.
+              {" "}Official spender:{" "}
+              <a
+                className="contract-address"
+                href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {SALE_CONTRACT_ADDRESS} ↗
+              </a>
+            </p>
+
+            <label className="risk-acknowledgement">
+              <input
+                type="checkbox"
+                checked={riskAcknowledged}
+                onChange={(event) => setRiskAcknowledged(event.target.checked)}
+                disabled={isBusy}
+              />
+              <span>
+                I acknowledge that I have read the{" "}
+                <Link href="/risk-disclosure" target="_blank" rel="noreferrer">
+                  Risk Disclosure
+                </Link>.
+              </span>
+            </label>
+
             <button
               className="purchase-action"
               type="button"
               onClick={needsApproval ? approveUsdt : purchaseZarai}
-              disabled={Boolean(validationError) || isBusy || stage === "confirmed"}
+              disabled={Boolean(validationError) || !riskAcknowledged || isBusy || stage === "confirmed"}
             >
               {actionLabel}
             </button>
@@ -474,9 +518,23 @@ export function BuyZaraiModal() {
             <p className="transaction-help">
               Approval and purchase are separate actions. Nothing is submitted
               until you confirm each request in your wallet.
-              {" "}The sale contract price is not a secondary-market price.
-              {" "}<a href="/whitepaper#risk-information">Read risk information</a>.
+              {" "}The current Sale Contract price is not a secondary-market
+              quote or a guaranteed resale or redemption value.
+              {" "}The website interface does not control or hold your private keys.
             </p>
+
+            {saleReadError && (
+              <p className="transaction-help">
+                Temporarily unavailable — verify on{" "}
+                <a
+                  href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}#readContract`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  BscScan
+                </a>.
+              </p>
+            )}
 
             {(approvalHash || purchaseHash) && (
               <div className="transaction-links">
@@ -490,13 +548,25 @@ export function BuyZaraiModal() {
                   </a>
                 )}
                 {purchaseHash && (
-                  <a
-                    href={`${BSCSCAN_BASE_URL}/tx/${purchaseHash}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View purchase on BscScan ↗
-                  </a>
+                  <>
+                    <a
+                      href={`${BSCSCAN_BASE_URL}/tx/${purchaseHash}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View purchase on BscScan ↗
+                    </a>
+                    {address && (
+                      <a
+                        href={`${BSCSCAN_BASE_URL}/token/${ZARAI_TOKEN_ADDRESS}?a=${address}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Verify wallet ZARAI balance ↗
+                      </a>
+                    )}
+                    <Link href="/how-to-buy">Token import &amp; purchase verification</Link>
+                  </>
                 )}
               </div>
             )}

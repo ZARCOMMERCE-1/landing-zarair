@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BuyZaraiModal } from "@/components/BuyZaraiModal";
 import { SaleStatusBadge } from "@/components/SaleStatusBadge";
 import { useSubtitleCycle } from "@/hooks/useSubtitleCycle";
+import { JURISDICTION_STATEMENT } from "@/lib/project-content";
 
 export function Hero() {
   const subtitle = useSubtitleCycle();
@@ -62,7 +63,7 @@ export function Hero() {
 
       <h1>Zar Air (ZARAI)</h1>
       <p className="hero-subtitle">
-        <span className="subtitle-static">A BEP-20 token on BNB Smart Chain for the Zar Air ecosystem.</span>
+        <span className="subtitle-static">A fixed-supply BEP-20 token on BNB Smart Chain supporting the development of the Zar Air project.</span>
         <span className="subtitle-cycle">
           <span
             className={`cycle-word${subtitle.isHidden ? " hidden" : ""}`}
@@ -78,9 +79,8 @@ export function Hero() {
         <a href="/how-to-buy" className="btn-tertiary">How to Buy</a>
       </div>
       <p className="purchase-risk-note">
-        ZARAI can lose all value. Availability may be subject to applicable laws
-        and restrictions in your jurisdiction. {" "}
-        <a href="/whitepaper#risk-information">Read risk information</a> before purchasing.
+        Crypto assets can fluctuate significantly in value, including total loss. {JURISDICTION_STATEMENT}{" "}
+        <a href="/risk-disclosure">Read the Risk Disclosure</a> before purchasing.
       </p>
     </section>
   );

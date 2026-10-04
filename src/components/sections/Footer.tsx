@@ -34,12 +34,13 @@ export function Footer() {
               <li><a href={`${BSCSCAN_BASE_URL}/token/${PAYMENT_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">Payment Token</a></li>
               <li><Link href="/how-to-buy">How to Buy</Link></li>
               <li><Link href="/whitepaper">Project Overview</Link></li>
-              <li><Link href="/whitepaper#risk-information">Risk Information</Link></li>
+              <li><Link href="/risk-disclosure">Risk Disclosure</Link></li>
             </ul>
           </div>
           <div className="footer-links">
             <h4>Project</h4>
             <ul>
+              <li><Link href="/#team">Project Team</Link></li>
               <li><a href={BSCSCAN_BASE_URL} target="_blank" rel="noreferrer">BscScan Explorer</a></li>
               <li><a href="https://www.bnbchain.org/en" target="_blank" rel="noreferrer">BNB Chain</a></li>
               <li><a href="https://zarair.com">Official Website</a></li>

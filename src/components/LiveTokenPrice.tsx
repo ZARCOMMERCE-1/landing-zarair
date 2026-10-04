@@ -2,7 +2,7 @@
 
 import { formatUnits } from "viem";
 import { useZaraiSale } from "@/hooks/useZaraiSale";
-import { PAYMENT_TOKEN_DECIMALS } from "@/lib/contracts";
+import { BSCSCAN_BASE_URL, PAYMENT_TOKEN_DECIMALS, SALE_CONTRACT_ADDRESS } from "@/lib/contracts";
 
 function formatPrice(value: bigint) {
   return Number(formatUnits(value, PAYMENT_TOKEN_DECIMALS)).toLocaleString(
@@ -16,11 +16,13 @@ function formatPrice(value: bigint) {
 export function LiveTokenPrice() {
   const { tokenPrice, isSaleLoading, saleReadError } = useZaraiSale();
 
+  if (saleReadError) {
+    return <p className="live-data-unavailable">Temporarily unavailable — <a href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}#readContract`} target="_blank" rel="noreferrer">verify on BscScan</a></p>;
+  }
+
   return (
     <div className="stat-value live-price">
-      {saleReadError
-        ? "Unavailable"
-        : isSaleLoading || tokenPrice === undefined
+      {isSaleLoading || tokenPrice === undefined
           ? "Loading…"
           : `${formatPrice(tokenPrice)} USDT`}
     </div>

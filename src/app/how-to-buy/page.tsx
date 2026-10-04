@@ -2,7 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { Footer } from "@/components/sections/Footer";
-import { BSCSCAN_BASE_URL, PAYMENT_TOKEN_ADDRESS } from "@/lib/contracts";
+import {
+  BSCSCAN_BASE_URL,
+  CHAIN_ID,
+  PAYMENT_TOKEN_ADDRESS,
+  SALE_CONTRACT_ADDRESS,
+  TOKEN_DECIMALS,
+  ZARAI_TOKEN_ADDRESS,
+} from "@/lib/contracts";
+import {
+  JURISDICTION_STATEMENT,
+  SALE_CHANNEL_STATEMENT,
+} from "@/lib/project-content";
 import "../style.css";
 
 export const metadata: Metadata = {
@@ -34,50 +45,45 @@ export default function HowToBuy() {
 
         <div className="how-to-header">
           <h1>How to Buy ZARAI</h1>
+          <p>{SALE_CHANNEL_STATEMENT}</p>
           <p>
-            These steps describe purchasing ZARAI tokens through
-            the sale contract on BNB Smart Chain Mainnet (chain ID 56).
-          </p>
-          <p>
-            ZARAI can lose all value. Availability may be subject to applicable
-            laws and restrictions in your jurisdiction. Read the{" "}
-            <Link href="/whitepaper#risk-information">risk information</Link> before purchasing.
+            Use BNB Smart Chain Mainnet (chain ID {CHAIN_ID}). Crypto assets can
+            fluctuate significantly in value. {JURISDICTION_STATEMENT} Read the{" "}
+            <Link href="/risk-disclosure">Risk Disclosure</Link> before purchasing.
           </p>
         </div>
 
-        <section
-          className="how-to-video-section"
-          aria-labelledby="learning-video-title"
-        >
+        <section className="how-to-video-section" aria-labelledby="verify-before-buy-title">
           <div className="how-to-video-heading">
-            <span>Video walkthrough</span>
-            <h2 id="learning-video-title">ZARAI purchase walkthrough</h2>
-            <p id="learning-video-description">
-              Watch the complete purchase process, then use the written guide
-              below as a step-by-step reference.
-            </p>
+            <span>Official contracts</span>
+            <h2 id="verify-before-buy-title">Verify Before You Buy</h2>
           </div>
-          <div className="how-to-video-frame">
-            {/* The detailed written guide below provides an equivalent text alternative. */}
-            <video
-              className="how-to-video"
-              controls
-              preload="metadata"
-              playsInline
-              aria-describedby="learning-video-description"
-            >
-              <source
-                src="/videos/zarair-how-to-buy.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support embedded videos. Use the written
-              buying guide below instead.
-            </video>
-          </div>
-          <p className="how-to-video-note">
-            Before confirming a transaction, make sure your wallet is on BNB
-            Chain and verify the official contract details shown on the site.
-          </p>
+          <ul className="step-list">
+            {[
+              { label: "Official ZARAI Token", address: ZARAI_TOKEN_ADDRESS, path: "/token/" },
+              { label: "Official Sale Contract", address: SALE_CONTRACT_ADDRESS, path: "/address/" },
+              { label: "Official USDT on BNB Smart Chain", address: PAYMENT_TOKEN_ADDRESS, path: "/token/" },
+            ].map((contract) => (
+              <li key={contract.address}>
+                <strong>{contract.label}</strong>
+                <a
+                  className="contract-address"
+                  href={`${BSCSCAN_BASE_URL}${contract.path}${contract.address}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {contract.address} ↗
+                </a>
+              </li>
+            ))}
+            <li>Always verify the contract address and network before signing a transaction.</li>
+            <li>Zar Air will never ask for your seed phrase or private key.</li>
+            <li>
+              If you receive an unsolicited message claiming to represent Zar
+              Air, verify it through <Link href="/">zarair.com</Link> or{" "}
+              <a href="mailto:info@zarair.com">info@zarair.com</a>.
+            </li>
+          </ul>
         </section>
 
         <div className="steps-container">
@@ -98,9 +104,7 @@ export default function HowToBuy() {
                 Google Play link on the MetaMask download page.
               </li>
               <li>
-                On desktop, MetaMask is available for Chrome, Firefox, Brave,
-                and Edge. Select &ldquo;Add to Browser&rdquo; and confirm the
-                extension installation.
+                Follow the installation instructions for your device.
               </li>
             </ul>
           </div>
@@ -121,25 +125,27 @@ export default function HowToBuy() {
                 as instructed by MetaMask and keep it private.
               </li>
               <li>
-                Never share your phrase with anyone. MetaMask staff will never
-                ask for it.
+                Never share your seed phrase or private key. Zar Air support
+                will never request either.
               </li>
+              <li>The website interface does not control or hold your private keys.</li>
             </ul>
           </div>
 
           <div className="step-card">
             <div className="step-number">3</div>
-            <h3>Get USDT (BEP-20)</h3>
+            <h3>Get USDT on BNB Smart Chain</h3>
             <ul className="step-list">
-              <li>ZARAI tokens are purchased with USDT on BNB Chain.</li>
+              <li>ZARAI tokens are purchased with the official USDT contract listed above.</li>
               <li>You also need BNB on BNB Smart Chain to pay network fees for approval and purchase.</li>
               <li>
-                Buy USDT on an exchange and withdraw it using the{" "}
-                <strong>BNB Smart Chain (BEP-20)</strong> network.
+                If withdrawing from an exchange, select the{" "}
+                <strong>BNB Smart Chain (BEP-20)</strong> network and verify your
+                receiving wallet address before submitting.
               </li>
               <li className="step-warning">
-                Do NOT withdraw via ERC-20 or other networks — your funds will
-                not arrive on BNB Chain.
+                USDT on Ethereum or another network cannot pay for this sale.
+                Check both the network and token address before transferring.
               </li>
               <li>
                 You can verify your USDT contract is correct on{" "}
@@ -161,31 +167,145 @@ export default function HowToBuy() {
             <ul className="step-list">
               <li>
                 Click <strong>&ldquo;Connect Wallet&rdquo;</strong> on the{" "}
-                <Link href="/">home page</Link> to link your MetaMask.
+                <Link href="/">home page</Link> and approve the wallet connection.
+                Check that your wallet is on BNB Smart Chain Mainnet.
               </li>
               <li>
-                On mobile Chrome, the connect button opens the installed
-                MetaMask app. Approve the connection there, then return to
-                Chrome to continue.
+                Follow your wallet&apos;s connection prompts. On mobile, return
+                to the website after completing the connection in your wallet.
               </li>
               <li>
                 Click <strong>&ldquo;Purchase ZARAI&rdquo;</strong> and enter the
-                amount of ZARAI you want to purchase.
+                amount, and review the current Sale Contract price and required USDT.
               </li>
               <li>
-                First, approve the sale contract to spend the required USDT
-                amount, then confirm the separate purchase transaction.
+                Read the <Link href="/risk-disclosure">Risk Disclosure</Link>
+                {" "}and select the reading acknowledgement. Selecting the
+                checkbox does not submit a transaction or open a wallet request.
               </li>
               <li>
-                Each transaction requires a confirmation in your MetaMask popup
-                — review the details and click Confirm.
+                If your existing USDT allowance is insufficient, the approval
+                transaction authorizes the official Sale Contract to spend the
+                exact USDT amount required for this purchase. Review the spender
+                address and allowance amount in your wallet before signing.
               </li>
               <li>
-                After confirmation, your ZARAI balance will update
-                automatically.
+                After approval confirms, select Buy ZARAI to submit the separate
+                purchase transaction. If your existing allowance is sufficient,
+                the approval step is skipped. Confirm each transaction separately
+                in your wallet and review its details before signing.
+              </li>
+              <li>
+                The displayed price is the current official Sale Contract price.
+                It is not a secondary-market quote or a guaranteed resale or redemption value.
               </li>
             </ul>
           </div>
+
+          <div className="step-card">
+            <div className="step-number">5</div>
+            <h3>Verify Your Purchase</h3>
+            <ul className="step-list">
+              <li>
+                Open the purchase transaction using the BscScan link in the
+                purchase window. Verify that <strong>Status = Success</strong>
+                {" "}and that the transaction interacted with the official{" "}
+                <a
+                  href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Sale Contract
+                </a>.
+              </li>
+              <li>
+                Check the ZARAI transfer to your wallet and your updated balance
+                in the purchase window or on the{" "}
+                <a
+                  href={`${BSCSCAN_BASE_URL}/token/${ZARAI_TOKEN_ADDRESS}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  ZARAI token page on BscScan
+                </a>.
+                A submitted transaction hash alone does not mean a purchase succeeded.
+              </li>
+              <li>
+                If ZARAI is missing from your wallet display, select BNB Smart
+                Chain Mainnet and use the wallet&apos;s custom-token import option.
+                Enter the official token address below, verify the symbol and
+                decimals, then confirm the import.
+                <span className="step-detail contract-address">Token: {ZARAI_TOKEN_ADDRESS}</span>
+                <span className="step-detail">Symbol: ZARAI · Decimals: {TOKEN_DECIMALS}</span>
+                See{" "}
+                <a
+                  href="https://support.metamask.io/manage-crypto/tokens/how-to-display-tokens-in-metamask"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  MetaMask&apos;s token-display instructions
+                </a>.
+              </li>
+              <li>
+                Importing a token only changes the wallet display; it does not
+                transfer tokens. The website interface does not control or hold your private keys.
+              </li>
+            </ul>
+          </div>
+
+          <section className="step-card" aria-labelledby="purchase-faq-title">
+            <h3 id="purchase-faq-title">Purchase FAQ</h3>
+            <ul className="step-list">
+              <li>
+                <strong>Why do I need BNB?</strong> BNB pays the network fees on
+                BNB Smart Chain. Keep enough for the purchase and, when needed,
+                a separate USDT approval. Fees vary with network conditions.
+              </li>
+              <li>
+                <strong>Which USDT can I use?</strong> Use USDT on BNB Smart
+                Chain Mainnet at the official payment-token address listed above.
+                A matching token name on another network is insufficient.
+              </li>
+              <li>
+                <strong>Why are approval and purchase separate?</strong> USDT
+                approval sets the amount the Sale Contract may spend from your
+                wallet. The purchase transaction then pays USDT and transfers
+                ZARAI. An approval alone does not buy ZARAI. Sufficient existing
+                allowance lets you skip a new approval.
+              </li>
+              <li>
+                <strong>What should I check in the approval?</strong> Verify the
+                spender is the official Sale Contract and the allowance matches
+                the required USDT amount. This website requests that exact
+                amount, rather than unlimited allowance. Review every wallet request before signing.
+              </li>
+              <li>
+                <strong>What if the network or address is wrong?</strong> Stop
+                before signing and correct it. Blockchain transactions can be
+                irreversible. If you already transferred funds, contact your
+                wallet or exchange through its official support channel; recovery
+                may not be possible.
+              </li>
+              <li>
+                <strong>How do I verify a transaction?</strong> Use the BscScan
+                transaction link, confirm Success, verify the Sale Contract
+                interaction and ZARAI transfer, then check your wallet balance.
+                Pending or reverted transactions are not completed purchases.
+              </li>
+              <li>
+                <strong>Why is ZARAI not visible in my wallet?</strong> First
+                verify the purchase and receiving address on BscScan. If the
+                balance exists, follow Step 5 to import the official token with
+                symbol ZARAI and {TOKEN_DECIMALS} decimals on BNB Smart Chain.
+              </li>
+              <li>
+                <strong>How do I contact Zar Air?</strong> Email{" "}
+                <a href="mailto:info@zarair.com">info@zarair.com</a> with the
+                public transaction hash if needed. Never send your seed phrase
+                or private key. Verify unsolicited messages through zarair.com or this email address.
+              </li>
+            </ul>
+          </section>
         </div>
       </main>
 

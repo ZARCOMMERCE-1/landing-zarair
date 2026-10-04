@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { LiveSaleInventory } from "@/components/LiveSaleInventory";
 import { LiveTokenPrice } from "@/components/LiveTokenPrice";
+import { ProjectAllocation } from "@/components/ProjectAllocation";
 import {
   BSCSCAN_BASE_URL,
   CHAIN_ID,
+  PAYMENT_TOKEN_ADDRESS,
   SALE_CONTRACT_ADDRESS,
   TOKEN_DECIMALS,
   ZARAI_TOKEN_ADDRESS,
@@ -34,12 +36,12 @@ export function Tokenomics() {
         <div className="tokenomics-layout">
           <div className="stats-grid">
             <div className="stat-card">
-              <div className="stat-label">Total Supply</div>
+              <div className="stat-label">Fixed Total Supply</div>
               <div className="stat-value">1,400,000</div>
               <div>ZARAI</div>
             </div>
             <div className="stat-card reveal reveal-delay-2">
-              <div className="stat-label">Live Sale Inventory</div>
+              <div className="stat-label">Current Sale Inventory</div>
               <LiveSaleInventory />
             </div>
             <div className="stat-card reveal reveal-delay-3">
@@ -64,7 +66,7 @@ export function Tokenomics() {
                 <div><dt>Chain ID</dt><dd>{CHAIN_ID}</dd></div>
                 <div><dt>Standard</dt><dd>BEP-20</dd></div>
                 <div><dt>Decimals</dt><dd>{TOKEN_DECIMALS}</dd></div>
-                <div><dt>Total Supply</dt><dd>1,400,000 ZARAI</dd></div>
+                <div><dt>Fixed Total Supply</dt><dd>1,400,000 ZARAI</dd></div>
                 <div><dt>Token Contract</dt><dd><code>{ZARAI_TOKEN_ADDRESS}</code></dd></div>
                 <div><dt>Official Website</dt><dd><a href="https://zarair.com">https://zarair.com</a></dd></div>
                 <div><dt>Official Email</dt><dd><a href="mailto:info@zarair.com">info@zarair.com</a></dd></div>
@@ -78,11 +80,16 @@ export function Tokenomics() {
               <p className="token-copy-status" role="status">{copyStatus}</p>
               <dl className="token-details sale-contract-details">
                 <div><dt>Sale Contract</dt><dd><code>{SALE_CONTRACT_ADDRESS}</code></dd></div>
+                <div><dt>USDT Payment Token</dt><dd><a href={`${BSCSCAN_BASE_URL}/token/${PAYMENT_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer"><code>{PAYMENT_TOKEN_ADDRESS}</code></a></dd></div>
               </dl>
               <p className="token-information-note">This contract handles purchases with USDT; it is separate from the ZARAI token.</p>
               <a className="token-explorer-link" href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}`} target="_blank" rel="noreferrer">View Sale Contract on BscScan</a>
             </div>
           </div>
+        </div>
+        <div className="chart-card allocation-card">
+          <h3>Initial Token Allocation</h3>
+          <ProjectAllocation />
         </div>
       </div>
     </section>

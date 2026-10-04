@@ -1,6 +1,7 @@
 "use client";
 
 import { Roadmap } from "@/components/Roadmap";
+import { ProjectTeam } from "@/components/ProjectTeam";
 import { Features } from "@/components/sections/Features";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -18,6 +19,13 @@ export default function Home() {
       <Hero />
       <div className="section-divider" />
       <Features />
+      <section className="features" id="team" aria-labelledby="project-team-title">
+        <div className="section-header">
+          <h2 id="project-team-title">Project Team &amp; Supporting Entity</h2>
+          <p>Company formation details provided by the project owner.</p>
+        </div>
+        <ProjectTeam />
+      </section>
       <div className="section-divider" />
       <TokenUtility />
       <div className="section-divider" />

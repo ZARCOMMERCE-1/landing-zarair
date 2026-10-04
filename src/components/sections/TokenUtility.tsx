@@ -1,3 +1,5 @@
+import { FUTURE_FEATURES_STATEMENT } from "@/lib/project-content";
+
 export function TokenUtility() {
   return (
     <section className="token-utility" id="utility">
@@ -12,7 +14,7 @@ export function TokenUtility() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="inherit" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" /></svg>
           </div>
           <h3>Future Concepts — Under Evaluation</h3>
-          <p>Potential utility, reward and travel-related features are not implemented. Any development requires separate technical, commercial and regulatory review.</p>
+          <p>{FUTURE_FEATURES_STATEMENT} The planned low-cost airline concept is a future project; no flights or token-based travel redemption are currently available.</p>
           <span className="highlight">No current entitlement</span>
         </div>
         <div className="utility-card reveal reveal-delay-2">

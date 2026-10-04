@@ -1,20 +1,22 @@
 "use client";
 
+import { ALLOCATION_POLICY_STATEMENT, ALLOCATION_TECHNICAL_DISCLOSURE } from "@/lib/project-content";
+
 const ROADMAP_PHASES = [
   {
-    title: "Token & Sale Contracts",
+    title: "Token & Sale Infrastructure — Live",
     description:
-      "ZARAI and its USDT sale contract are deployed on BNB Smart Chain Mainnet.",
+      "ZARAI and its USDT Sale Contract are deployed on BNB Smart Chain Mainnet. The website provides wallet purchases and links to public contract information.",
   },
   {
-    title: "Digital Services — Under Evaluation",
+    title: "Digital Ecosystem — Development / Evaluation",
     description:
       "Potential digital services require technical, commercial and regulatory review before implementation. No delivery date is confirmed.",
   },
   {
-    title: "Future Concepts — Under Evaluation",
+    title: "Planned Airline & Travel Ecosystem",
     description:
-      "Potential reward and travel-related features are not implemented. Eligibility and redemption rules are not finalized, and no current on-chain claim to these benefits exists.",
+      "A planned low-cost airline concept is a future project. Travel-related and reward features remain under evaluation, with no confirmed launch date or current flight entitlement.",
   },
 ];
 
@@ -26,7 +28,7 @@ export function Roadmap() {
       {ROADMAP_PHASES.map((phase, index) => {
         const isActive = index === ACTIVE_PHASE_INDEX;
         const phaseLabel = isActive
-          ? `Phase ${index + 1} — Current`
+          ? `Phase ${index + 1} — Live`
           : `Phase ${index + 1}`;
 
         return (
@@ -41,6 +43,9 @@ export function Roadmap() {
               <div className="phase">{phaseLabel}</div>
               <h3>{phase.title}</h3>
               <p>{phase.description}</p>
+              {index === 2 && (
+                <p className="roadmap-policy"><strong>Project policy:</strong> {ALLOCATION_POLICY_STATEMENT} <strong>Technical disclosure:</strong> {ALLOCATION_TECHNICAL_DISCLOSURE}</p>
+              )}
             </div>
           </div>
         );

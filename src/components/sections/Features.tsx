@@ -3,7 +3,7 @@ export function Features() {
     <section className="features" id="features">
       <div className="section-header reveal">
         <h2>About Zar Air</h2>
-        <p>Zar Air (ZARAI) is a BEP-20 token on BNB Smart Chain for the Zar Air ecosystem, designed to support digital services and token-based utilities.</p>
+        <p>Zar Air (ZARAI) supports the development of the Zar Air project, including a planned low-cost airline concept. Future digital, loyalty and travel-related utility is under evaluation.</p>
       </div>
       <div className="features-grid">
         <div className="feature-card reveal reveal-delay-1">

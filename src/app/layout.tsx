@@ -4,7 +4,7 @@ import "./style.css";
 
 const title = "Zar Air (ZARAI) | Official Website";
 const description =
-  "Zar Air (ZARAI) is a BEP-20 token deployed on BNB Smart Chain for the Zar Air ecosystem.";
+  "Zar Air (ZARAI) is a fixed-supply BEP-20 token on BNB Smart Chain supporting the development of the Zar Air project.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zarair.com"),

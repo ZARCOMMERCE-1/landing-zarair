@@ -14,9 +14,10 @@ export function AdminSecurityNotice() {
         </div>
       </div>
       <p className="admin-security-lead">
-        MetaMask/Blockaid warning may appear until the contracts are verified,
-        token info is submitted, and wallet security providers review the
-        contract.
+        Wallet warnings reflect the security provider&apos;s assessment.
+        Contract source verification and Token Info publication do not
+        guarantee that a warning will be removed. Review the alert and
+        contract details before signing.
       </p>
       <ul className="admin-security-checklist">
         <li>
@@ -26,7 +27,7 @@ export function AdminSecurityNotice() {
             target="_blank"
             rel="noreferrer"
           >
-            Token contract verified on BscScan ↗
+            Check token contract source on BscScan ↗
           </a>
         </li>
         <li>
@@ -36,13 +37,13 @@ export function AdminSecurityNotice() {
             target="_blank"
             rel="noreferrer"
           >
-            Sale contract verified on BscScan ↗
+            Check sale contract source on BscScan ↗
           </a>
         </li>
-        <li><span aria-hidden="true">□</span> Token Info submitted</li>
+        <li><span aria-hidden="true">□</span> Check Token Info submission status</li>
         <li><span aria-hidden="true">□</span> Approve flow uses exact USDT amount, not unlimited</li>
         <li><span aria-hidden="true">□</span> Transparency section added to landing</li>
-        <li><span aria-hidden="true">□</span> False-positive review submitted if needed</li>
+        <li><span aria-hidden="true">□</span> Review wallet-provider warning status if needed</li>
       </ul>
       <p className="admin-security-footnote">
         This checklist is informational. Verify each item with the relevant
