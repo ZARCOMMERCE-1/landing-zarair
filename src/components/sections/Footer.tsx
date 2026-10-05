@@ -33,7 +33,7 @@ export function Footer() {
               <li><a href={`${BSCSCAN_BASE_URL}/address/${SALE_CONTRACT_ADDRESS}`} target="_blank" rel="noreferrer">Sale Contract on BscScan</a></li>
               <li><a href={`${BSCSCAN_BASE_URL}/token/${PAYMENT_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">Payment Token</a></li>
               <li><Link href="/how-to-buy">How to Buy</Link></li>
-              <li><Link href="/whitepaper">Project Overview</Link></li>
+              <li><Link href="/whitepaper">Whitepaper</Link></li>
               <li><Link href="/risk-disclosure">Risk Disclosure</Link></li>
             </ul>
           </div>
