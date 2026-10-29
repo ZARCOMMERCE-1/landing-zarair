@@ -231,8 +231,12 @@ export default function HowToBuy() {
                 A submitted transaction hash alone does not mean a purchase succeeded.
               </li>
               <li>
-                If ZARAI is missing from your wallet display, select BNB Smart
-                Chain Mainnet and use the wallet&apos;s custom-token import option.
+                If ZARAI is missing from MetaMask, connect your wallet on the{" "}
+                <Link href="/#tokenomics">home page&apos;s Token Information section</Link>,
+                {" "}click <strong>Add ZARAI to MetaMask</strong>, and confirm the
+                import in your wallet. Approve switching to BNB Smart Chain if prompted.
+                You can also select BNB Smart Chain Mainnet and use the
+                wallet&apos;s custom-token import option.
                 Enter the official token address below, verify the symbol and
                 decimals, then confirm the import.
                 <span className="step-detail contract-address">Token: {ZARAI_TOKEN_ADDRESS}</span>

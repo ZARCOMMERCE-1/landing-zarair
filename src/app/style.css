@@ -1931,6 +1931,7 @@ footer::before {
 .wallet-btn:disabled,
 .network-switch-btn:disabled,
 .btn-primary:disabled,
+.btn-tertiary:disabled,
 .purchase-action:disabled,
 .modal-close:disabled {
   cursor: not-allowed;
@@ -1939,7 +1940,8 @@ footer::before {
 }
 
 .wallet-btn:disabled:hover,
-.btn-primary:disabled:hover {
+.btn-primary:disabled:hover,
+.btn-tertiary:disabled:hover {
   box-shadow: none;
   transform: none;
 }

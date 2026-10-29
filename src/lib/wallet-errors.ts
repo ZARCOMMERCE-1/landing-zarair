@@ -1,4 +1,4 @@
-type WalletAction = "connect" | "switch" | "approve" | "purchase" | "admin";
+type WalletAction = "connect" | "switch" | "approve" | "purchase" | "admin" | "watchAsset";
 
 const actionLabels: Record<WalletAction, string> = {
   connect: "Wallet connection",
@@ -6,6 +6,7 @@ const actionLabels: Record<WalletAction, string> = {
   approve: "USDT approval",
   purchase: "Purchase",
   admin: "Admin transaction",
+  watchAsset: "Token import",
 };
 
 export function getWalletErrorMessage(
@@ -23,6 +24,17 @@ export function getWalletErrorMessage(
     message.includes("denied transaction signature")
   ) {
     return `${actionLabels[action]} was rejected in the wallet.`;
+  }
+
+  if (
+    action === "watchAsset" &&
+    (message.includes("unsupportedprovidermethod") ||
+      message.includes("not supported") ||
+      message.includes("does not support") ||
+      message.includes("does not exist") ||
+      message.includes("method not found"))
+  ) {
+    return "Your wallet does not support automatic token import. Import ZARAI manually using the token contract above.";
   }
 
   if (

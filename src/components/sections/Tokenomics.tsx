@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useAccount, useSwitchChain, useWatchAsset } from "wagmi";
 import { LiveSaleInventory } from "@/components/LiveSaleInventory";
 import { LiveTokenPrice } from "@/components/LiveTokenPrice";
 import { ProjectAllocation } from "@/components/ProjectAllocation";
@@ -12,16 +13,55 @@ import {
   TOKEN_DECIMALS,
   ZARAI_TOKEN_ADDRESS,
 } from "@/lib/contracts";
+import { getWalletErrorMessage } from "@/lib/wallet-errors";
 
 export function Tokenomics() {
-  const [copyStatus, setCopyStatus] = useState("");
+  const { chainId, isConnected } = useAccount();
+  const { switchChainAsync } = useSwitchChain();
+  const { watchAssetAsync } = useWatchAsset();
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isAddingToken, setIsAddingToken] = useState(false);
 
   async function copyTokenAddress() {
     try {
       await navigator.clipboard.writeText(ZARAI_TOKEN_ADDRESS);
-      setCopyStatus("Token contract address copied.");
+      setStatusMessage("Token contract address copied.");
     } catch {
-      setCopyStatus("Unable to copy. Select and copy the token address above.");
+      setStatusMessage("Unable to copy. Select and copy the token address above.");
+    }
+  }
+
+  async function addTokenToWallet() {
+    if (!isConnected || isAddingToken) {
+      return;
+    }
+
+    setIsAddingToken(true);
+    setStatusMessage("");
+
+    try {
+      if (chainId !== CHAIN_ID) {
+        await switchChainAsync({ chainId: CHAIN_ID });
+      }
+
+      const accepted = await watchAssetAsync({
+        type: "ERC20",
+        options: {
+          address: ZARAI_TOKEN_ADDRESS,
+          symbol: "ZARAI",
+          decimals: TOKEN_DECIMALS,
+        },
+      });
+
+      setStatusMessage(
+        accepted
+          ? "Token request sent. Check MetaMask to confirm ZARAI is displayed on BNB Smart Chain."
+          : "Token import was not approved. Try again or import the token manually using the address above.",
+      );
+    } catch (error) {
+      setStatusMessage(getWalletErrorMessage(error, "watchAsset"));
+    } finally {
+      setIsAddingToken(false);
     }
   }
 
@@ -72,12 +112,27 @@ export function Tokenomics() {
                 <div><dt>Official Email</dt><dd><a href="mailto:info@zarair.com">info@zarair.com</a></dd></div>
               </dl>
               <p className="token-information-note">Use the token contract above when adding ZARAI to your wallet.</p>
+              <p className="token-information-note" id="add-token-note">
+                {isConnected
+                  ? "Confirm the token import in MetaMask. If needed, approve switching to BNB Smart Chain first. No transaction or gas fee is required."
+                  : "Connect your MetaMask wallet using Connect Wallet at the top of the page to add ZARAI automatically."}
+              </p>
               <div className="token-actions">
+                <button
+                  type="button"
+                  className="btn-tertiary"
+                  onClick={addTokenToWallet}
+                  disabled={!isConnected || isAddingToken}
+                  aria-busy={isAddingToken}
+                  aria-describedby="add-token-note"
+                >
+                  {isAddingToken ? "Check MetaMask…" : "Add ZARAI to MetaMask"}
+                </button>
                 <button type="button" className="btn-tertiary" onClick={copyTokenAddress}>Copy Token Contract</button>
                 <a href={`${BSCSCAN_BASE_URL}/token/${ZARAI_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">View Token on BscScan</a>
                 <a href={`${BSCSCAN_BASE_URL}/address/${ZARAI_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer">View Contract on BscScan</a>
               </div>
-              <p className="token-copy-status" role="status">{copyStatus}</p>
+              <p className="token-copy-status" role="status">{statusMessage}</p>
               <dl className="token-details sale-contract-details">
                 <div><dt>Sale Contract</dt><dd><code>{SALE_CONTRACT_ADDRESS}</code></dd></div>
                 <div><dt>USDT Payment Token</dt><dd><a href={`${BSCSCAN_BASE_URL}/token/${PAYMENT_TOKEN_ADDRESS}`} target="_blank" rel="noreferrer"><code>{PAYMENT_TOKEN_ADDRESS}</code></a></dd></div>
