@@ -10,6 +10,7 @@ import {
   useWriteContract,
 } from "wagmi";
 import { TokenBalances } from "@/components/TokenBalances";
+import { SaleAccessGate } from "@/components/SaleAccessGate";
 import { useZaraiSale } from "@/hooks/useZaraiSale";
 import { erc20Abi, saleAbi } from "@/lib/abis";
 import {
@@ -38,6 +39,7 @@ function displayTokenAmount(value: bigint, decimals: number, digits = 6) {
 
 export function BuyZaraiModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [saleAccessGranted, setSaleAccessGranted] = useState(false);
   const [amount, setAmount] = useState("");
   const [stage, setStage] = useState<TransactionStage>("idle");
   const [error, setError] = useState("");
@@ -209,14 +211,26 @@ export function BuyZaraiModal() {
     }
 
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape" && !isBusy) {
+      if (event.key === "Escape" && !isBusy && saleAccessGranted) {
         setIsOpen(false);
       }
     }
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [isBusy, isOpen]);
+  }, [isBusy, isOpen, saleAccessGranted]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
 
   function updateAmount(value: string) {
     setAmount(value);
@@ -328,6 +342,7 @@ export function BuyZaraiModal() {
           disabled={triggerDisabled}
           onClick={() => {
             setRiskAcknowledged(false);
+            setSaleAccessGranted(false);
             setIsOpen(true);
           }}
           aria-describedby="buy-trigger-reason"
@@ -343,7 +358,11 @@ export function BuyZaraiModal() {
         <div
           className="modal-backdrop"
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget && !isBusy) {
+            if (
+              event.target === event.currentTarget &&
+              !isBusy &&
+              saleAccessGranted
+            ) {
               setIsOpen(false);
             }
           }}
@@ -352,24 +371,33 @@ export function BuyZaraiModal() {
             className="buy-modal"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="buy-modal-title"
+            aria-labelledby={
+              saleAccessGranted ? "buy-modal-title" : "sale-access-title"
+            }
           >
-            <div className="modal-heading">
-              <div>
-                <span className="modal-eyebrow">BNB Chain Mainnet</span>
-                <h2 id="buy-modal-title">Buy ZARAI with USDT</h2>
+            {saleAccessGranted && (
+              <div className="modal-heading">
+                <div>
+                  <span className="modal-eyebrow">BNB Chain Mainnet</span>
+                  <h2 id="buy-modal-title">Buy ZARAI with USDT</h2>
+                </div>
+                <button
+                  className="modal-close"
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  disabled={isBusy}
+                  aria-label="Close purchase window"
+                >
+                  ×
+                </button>
               </div>
-              <button
-                className="modal-close"
-                type="button"
-                onClick={() => setIsOpen(false)}
-                disabled={isBusy}
-                aria-label="Close purchase window"
-              >
-                ×
-              </button>
-            </div>
+            )}
 
+            <SaleAccessGate
+              className="sale-access--modal"
+              onAccept={() => setSaleAccessGranted(true)}
+              onLeave={() => setIsOpen(false)}
+            >
             {isWrongNetwork && (
               <div className="transaction-notice warning">
                 <span>Your wallet is connected to the wrong network.</span>
@@ -570,6 +598,7 @@ export function BuyZaraiModal() {
                 )}
               </div>
             )}
+            </SaleAccessGate>
           </section>
         </div>
       )}
