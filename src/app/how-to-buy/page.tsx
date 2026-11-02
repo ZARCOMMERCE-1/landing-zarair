@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { SaleAccessGate } from "@/components/SaleAccessGate";
 import { Footer } from "@/components/sections/Footer";
 import {
   BSCSCAN_BASE_URL,
@@ -39,6 +40,7 @@ export default function HowToBuy() {
       </nav>
 
       <main className="how-to-page">
+        <SaleAccessGate>
         <Link href="/" className="back-link">
           &larr; Back to Home
         </Link>
@@ -311,6 +313,7 @@ export default function HowToBuy() {
             </ul>
           </section>
         </div>
+        </SaleAccessGate>
       </main>
 
       <Footer />

@@ -806,6 +806,168 @@ nav.scrolled .wallet-btn {
 }
 
 /* How to Buy Page */
+.sale-access {
+  width: min(680px, 100%);
+  margin: 0 auto 2rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(74, 155, 217, 0.1), transparent 36%),
+    rgba(20, 20, 20, 0.68);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  color: var(--text-primary);
+}
+
+.sale-access__brand {
+  margin-bottom: 1rem;
+  color: var(--sky-blue);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sale-access h1 {
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--primary-gold);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 4vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.sale-access > p,
+.sale-access li {
+  color: #d3d3d3;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.sale-access ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.sale-access li {
+  margin: 0.4rem 0;
+}
+
+.sale-access__prompt,
+.sale-access__must {
+  color: var(--text-primary) !important;
+}
+
+.sale-access__must {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sale-access__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 1.4rem 0 0.8rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.sale-access__check input {
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  accent-color: var(--primary-gold);
+}
+
+.sale-access__limitation {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(74, 155, 217, 0.2);
+  border-radius: 10px;
+  background: rgba(74, 155, 217, 0.06);
+  color: var(--text-secondary) !important;
+  font-size: 0.76rem !important;
+}
+
+.sale-access__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.sale-access__enter,
+.sale-access__leave {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.5rem;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.sale-access__enter {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+  color: var(--dark-bg);
+  font-weight: 700;
+}
+
+.sale-access__enter:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.sale-access__enter:not(:disabled):hover {
+  background: linear-gradient(135deg, var(--accent-gold), var(--secondary-gold));
+}
+
+.sale-access__leave:hover {
+  border-color: var(--primary-gold);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--primary-gold);
+}
+
+.sale-access--modal {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.sale-access--modal .sale-access__brand {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 560px) {
+  .sale-access {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .sale-access__actions {
+    flex-direction: column;
+  }
+}
+
 .how-to-page {
   max-width: 720px;
   margin: 0 auto;
