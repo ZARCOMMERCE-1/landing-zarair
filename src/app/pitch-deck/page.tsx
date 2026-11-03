@@ -143,7 +143,7 @@ export default function PitchDeckPage() {
                     </div>
                   </div>
                   <p style={{marginTop: "10px", color: "var(--muted)", fontSize: "13px", position: "relative"}}>Transparency note: as stated in our whitepaper, ZARAI confers no ownership stake and no profit rights in the company.</p>
-                  <div className="footer"><span>03 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>03 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -171,7 +171,7 @@ export default function PitchDeckPage() {
                   <div className="gold-box" style={{fontSize: "16px", textAlign: "center"}}>
                     <b>The key sentence for investors:</b> &quot;We are not selling you an idea. We are presenting a one-year-old project with tested infrastructure, a live website, and a ready-made sale mechanism.&quot;
                   </div>
-                  <div className="footer"><span>04 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>04 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -206,7 +206,7 @@ export default function PitchDeckPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="footer"><span>05 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>05 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -248,7 +248,7 @@ export default function PitchDeckPage() {
                     Sources: Precedence Research — Low-Cost Carrier Market (<a href="https://www.precedenceresearch.com/low-cost-carrier-market">precedenceresearch.com</a>)
                     · Crypto.com Research — Crypto Market Sizing Report 2025 (<a href="https://crypto.com/en/research/crypto-market-sizing-report-2025">crypto.com/en/research</a>)
                   </div>
-                  <div className="footer"><span>06 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>06 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -274,7 +274,7 @@ export default function PitchDeckPage() {
                     </div>
                   </div>
                   <p style={{marginTop: "8px", color: "var(--muted)", fontSize: "13px", position: "relative"}}>Note: aviation licensing timelines rest with the regulators of the relevant jurisdiction and are inherently lengthy by nature.</p>
-                  <div className="footer"><span>07 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>07 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -297,7 +297,7 @@ export default function PitchDeckPage() {
                     <div className="t1">Your invitation is waiting — <b>the Founders&apos; Circle is capped at 100 supporters.</b></div>
                     <div className="t2">Take your place directly at <span className="num-ltr">zarair.com/how-to-buy</span> — tokens are delivered instantly to your own wallet.</div>
                   </div>
-                  <div className="footer"><span>08 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>08 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -315,7 +315,7 @@ export default function PitchDeckPage() {
                   <div className="gold-box">
                     <b>Our principle:</b> not a single dollar goes into building technology — the infrastructure is already built. Every dollar of this phase turns a ready project into a legal company.
                   </div>
-                  <div className="footer"><span>09 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>09 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -345,7 +345,7 @@ export default function PitchDeckPage() {
                   <div className="gold-box">
                     <b>Our commitment to investors:</b> any benefit linked to a token purchase is disclosed — plainly and without ambiguity — in this deck and in our public documents. No hidden arrangements.
                   </div>
-                  <div className="footer"><span>10 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>10 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
@@ -361,11 +361,11 @@ export default function PitchDeckPage() {
                   <div className="gold-box" style={{marginTop: "14px"}}>
                     <b>Honesty statement:</b> ZARAI grants no profit rights, no ownership, and no repayment. Participating in this phase means supporting the launch of a real project.
                   </div>
-                  <div className="footer"><span>11 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>11 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
-                <section className="slide">
+                {/* <section className="slide">
                   <div className="kicker">Two Decades Behind One Idea</div>
                   <h2><span className="hicon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.8"/><path d="M16.5 14.6c3 0 5 2 5 5.4"/></svg></span><span className="gtext">Behind the Project</span></h2>
                   <div className="card" style={{display: "flex", gap: "18px", alignItems: "center", marginTop: "4px"}}>
@@ -395,7 +395,7 @@ export default function PitchDeckPage() {
                     <b>Internal note (remove before presenting):</b> insert the real names and track records of key team members, and replace the avatars with real photos. Angel investors weigh &quot;who is behind this&quot; as heavily as the idea itself.
                   </div>
                   <div className="footer"><span>12 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
-                </section>
+                </section> */}
 
                 
                 <section className="slide" style={{background: "radial-gradient(ellipse 700px 380px at 82% -10%, rgba(212,175,55,0.14), transparent 60%), linear-gradient(160deg, #0b0c11, #101014 60%, #191306)"}}>
@@ -410,7 +410,7 @@ export default function PitchDeckPage() {
                     <div style={{fontFamily: "Georgia, serif", fontSize: "19px", color: "#fff"}}><span className="num-ltr">zarair.com</span> &nbsp;·&nbsp; <span className="num-ltr">info@zarair.com</span></div>
                     <div style={{fontFamily: "Georgia, serif", fontStyle: "italic", fontSize: "17px", color: "var(--gold-bright)", marginTop: "10px"}}>&quot;Zar Air — Where Blockchain Takes Flight. Come Fly With Us.&quot;</div>
                   </div>
-                  <div className="footer"><span>13 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>12 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
           </div>
           <div className="pitch-deck-end-links">
