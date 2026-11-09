@@ -113,7 +113,7 @@ export default function PitchDeckPage() {
                       <p style={{color: "#c9cdd6"}}>A large market hungry for affordable flight — with no modern, transparent funding path available to the founders who want to serve it.</p>
                     </div>
                   </div>
-                  <div className="footer"><span>02 — 13</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
+                  <div className="footer"><span>02 — 12</span><span className="fbrand">ZAR AIR · zarair.com</span></div>
                 </section>
 
                 
